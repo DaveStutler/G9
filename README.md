@@ -15,27 +15,24 @@ Our next step in our data preprocessing is to compress the size of our matrices 
 ### Sept. 1st
 While the next step in our preprocessing plan involved making our matrices dense (i.e. "zooming into meaningful
 data") for the purpose of making our neural net run faster, we instead decided to go with an alternative approach.
-From our last milestone, we were able to extract 14 1000x1000 matrices. Through further analysis of the data stored
-in these matrices, we were able to deduce the following: 
+From our last milestone, we were able to extract 14 1000x1000 matrices such that: 
 1. rows correspond to position
 1. columns correspond to change in energy over distance (equates to Stopping power)
-1. values correspond to the number of collisions (more specifically, the number of decayed particles that were detected at that Stopping Power and Position ) 
+1. values correspond to the number of decayed particles that were detected at that Stopping Power and Position ) 
 
 As we have now developed a better understanding of what the matrices represent, we believe it is more beneficial
 for us to convert these matrices into tabular data form as it is something we are all more familiar and comfortable
-working with. 
+working with. However, for the final project, we entend to use a convolutional neural network on the matrices 
 
 Before creating this `.csv` file, we first one-hot encoded our `linear` and `circular` features. After doing so, we  then
 actually began the process of creating the dataframe columns (i.e. converting the matrices), which consisted of the positions,
-stopping power, and all other features as being their own separate columns. This process involved the challenge of shrinking our
-large dataset (115,000 data points) by finding a range of data in each matrix where a large amount of non-zero values would be completed
-removed without removing entire rows from the dataframe (to preserve shape of each matrix turned dataframe and to avoid concatenation conflicts).
+stopping power, the detection number for different particle types, and the one hot encoded columns representing circular and linear collider types. This process involved the challenge of trying to extract only the most useful parts of each matrix so that the size did not get too overwhelmingly large, while still keeping the rows and columns between matrices exactly the same indexes so that we could merge them into a dataframe smoothly based on the position and stopping power columns. 
 
 After each matrix was converted into a tabular dataform, we then merged each of them into a single tabular dataframe, after
-which we normalized all features before beginning training and testing of our model.
+which we normalized all features before beginning training and testing of our model. We normalized the circular data and the linear data seperately because the circular data on average had many more detections then linear, and we did not want this to bias our model. The circular data came from a differenrt root file where its likely more events were run, causing the circular data to have higher counts. A model that trained on this data would not have generalized to the real world, so we scaled all columns seperately for circular and linear collider types. 
 
 # Descriptions of Graphs 
-Thee y axis on our plots represents stopping power per particle. The x axis represents mass energy of a particle. We decided to leave the y axis inverted when graphing in order to make the y axis stand out more from the x axis to help with our analysis. Some interesting trends we noticed on these graphs were a small variance along the axis for pions and deuteron and proton minus distributions and logarithmic correlations with other distributions.
+The y axis on our plots represents stopping power per particle. The x axis represents mass energy of a particle. We decided to leave the y axis inverted when graphing in order to make the y axis stand out more from the x axis to help with our analysis. Some interesting trends we noticed on these graphs were a small variance along the axis for pions and deuteron and proton minus distributions and logarithmic correlations with other distributions.
 
 # Description and Evaluation of First Model
 ### Description
