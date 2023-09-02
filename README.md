@@ -39,7 +39,9 @@ Thee y axis on our plots represents stopping power per particle. The x axis repr
 
 # Description and Evaluation of First Model
 ### Description
-(write here)
+In hopes of predicting the type of collider, either circular or linear, we use a 4-layers ANN to predict the type that we one-hot encoded during our pre-processing phrase. This feed forward neural net base on the selected features of the particles to classify.
+* Given that we have large amounts of datapoints in our HolyGrail.csv, we use Relu activation functions for efficent runtime. We also use Sigmoid activation function to classify the 2 groups, and use Binary Logarithmic Loss function to update our model weights and bias. We split our dataset into 90:10 of propotion, with linear and circular columns as our target and every other columns as our features.
+* We check the MSE and accurary_score for performance, as well as illustrating the classification report on our result.
 
 ### Evaluation
 (write here)
