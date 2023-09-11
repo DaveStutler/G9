@@ -8,7 +8,7 @@ We have two datasets, `Output_File_2023_02_15.root` which includes data about th
 # Introduction
 
 # Methods
-## Data Exploration
+## Data Exploration Results
 ### Description of Data
 We compiled the relevant columns from both the linear collisions dataset and circular collisions dataset into a
 mutable dataframe. Although this dataframe appears to only have 2 rows, contained within those rows contain are
@@ -83,11 +83,6 @@ result.
 ### Description
 
 # Results
-## Data Exploration
-### Description of Data
-
-### Description of Graphs
-
 ## Data Preprocessing 
 ### Aug. 25th
 
