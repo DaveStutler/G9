@@ -27,54 +27,37 @@ decided to leave the y axis inverted when graphing in order to make the y axis s
 help with our analysis. Some interesting trends we noticed on these graphs were a small variance along the axis for
 pions and deuteron and proton minus distributions and logarithmic correlations with other distributions.
 
-## Data Preprocessing 
-### Aug. 25th
-Our next step in our data preprocessing is to compress the size of our matrices by removing excess zeros from both
-ends of the distributions and zoning in on the larger numerical values. We will also indentify the peak values in
-the gaussian distributions contrast the deviations with the ideal gaussian. 
-
-### Sept. 1st
-While the next step in our preprocessing plan involved making our matrices dense (i.e. "zooming into meaningful
-data") for the purpose of making our neural net run faster, we instead decided to go with an alternative approach.
-From our last milestone, we were able to extract 14 1000x1000 matrices such that: 
-1. rows correspond to position
-1. columns correspond to change in energy over distance (equates to Stopping power)
-1. values correspond to the number of decayed particles that were detected at that Stopping Power and Position  
-
-As we have now developed a better understanding of what the matrices represent, we believe it is more beneficial
-for us to convert these matrices into tabular data form as it is something we are all more familiar and comfortable
-working with. However, for the final project, we entend to use a convolutional neural network on the matrices 
-
-Before creating this `.csv` file, we first one-hot encoded our `linear` and `circular` features. After doing so,
-we  then actually began the process of creating the dataframe columns (i.e. converting the matrices), which
-consisted of the positions, stopping power, the detection number for different particle types, and the one hot
-encoded columns representing circular and linear collider types. This process involved the challenge of trying to
-extract only the most useful parts of each matrix so that the size did not get too overwhelmingly large, while
-still keeping the rows and columns between matrices exactly the same indexes so that we could merge them into a
-dataframe smoothly based on the position and stopping power columns. 
-
-After each matrix was converted into a tabular dataform, we then merged each of them into a single tabular
-dataframe, after which we normalized all features before beginning training and testing of our model. We normalized
-the circular data and the linear data seperately because the circular data on average had many more detections then
-linear, and we did not want this to bias our model. The circular data came from a differenrt root file where its
-likely more events were run, causing the circular data to have higher counts. A model that trained on this data
-would not have generalized to the real world, so we scaled all columns seperately for circular and linear collider
-types. 
+## Data Preprocessing (steps)
+1. Analyze original linear and circular `.root` files to determine which features coincide in both files
+1. Convert 14 1000x1000 matrices into tabular data form
+    1. One-hot encode our `linear` and `circular` features
+    1. Create single dataframe columns for each of the 14 1000x1000 matrices 
+    1. Concatenate single columns into 1 tabular dataframe
+        1. columns consist of position, stopping power, and then all other different features
+1. Generate normalized `.csv` files 
+    1. Normalize `circular` and `linear` elements separately
+    1. Split `train` and `test` sets 80:20 ratio
+    1. Normalize `train` and `test` sets separately
+    1. Create `X_train`, `y_train`, `X_test`, `y_test` splits and create `.csv` files for each. 
 
 ## Model 1: Binary Classification - Linear vs. Circular Collisions
 ### Description
-In hopes of predicting the type of collider, either circular or linear, we use a 4-layers ANN to predict the type
-that we one-hot encoded during our pre-processing phrase. This feed forward neural net base on the selected
+In hopes of predicting the type of collider, either circular or linear, we use a 6-layers ANN to predict the type
+that we one-hot encoded during our pre-processing phase. This feed forward neural net base on the selected
 features of the particles to classify.
-* Given that we have large amounts of datapoints in our HolyGrail.csv, we use Relu activation functions for
-efficent runtime. We also use Sigmoid activation function to classify the 2 groups, and use Binary Logarithmic Loss
-function to update our model weights and bias. We split our dataset into 90:10 of propotion, with linear and
-circular columns as our target and every other columns as our features.
+* Architecture: we use Relu activation functions for efficent runtime. We also use Sigmoid activation function in our output layer to classify the 2 groups, and use Binary Logarithmic Loss function to update our model weights and bias. We split our dataset into 90:10 of propotion, with linear and circular columns as our target and every other columns as our features.
 * We check the MSE and accurary_score for performance, as well as illustrating the classification report on our
 result.
 
 ## Model 2: Linear Regression - Predicting the Stopping Power and Position
 ### Description
+To increase the complexity of our project, we decided to make an attempt at using counts of particles detected to
+predict stopping power and position. To do this, we use build a 5-layer linear regression ANN model. 
+* Architecture: In our 1st hidden layer we use a linear activation function than then feeds its outputs into the
+2nd hidden layer which uses a LeakyRelu activation functions with a learning rate of 0.01 (the 3rd and 4th hidden
+layers follow this same architecture). The output layer makes use of a linear activation function. To update our model weights and bias, we  use the MSE loss function.
+* We check the MSE and accurary_score for performance, as well as illustrating the classification report on our
+result.
 
 ## Model 3: SVM - 
 ### Description
@@ -84,9 +67,7 @@ result.
 
 # Results
 ## Data Preprocessing 
-### Aug. 25th
-
-### Sept. 1st
+(wip)
 
 ## Model 1: Binary Classification - Linear vs. Circular Collisions
 ### Evaluation
@@ -117,13 +98,57 @@ First-fold cross-validation achieves the best performance in terms of MSE and R2
 
 # Discussion
 ## Data Exploration
-### Challenges
-The biggest challenge we came across with this Data Exploration milestone was figuring out how to extract the data from the two `.root` files we are working with. Initially, the plan was to convert these `.root` files into `.csv` files outside of Colab by first converting them into a dictionary and then a pandas dataframe and finally saving as a `.csv`, and then import the `.csv` files into Colab and work with those. However, for some reason, the `.csv` file conversion process was causing us to loose important data, so we decided to directly work with the `.root` files in Colab. We were able to copy and paste our old code which converted these `.root` files into a dictionary and then a pandas dataframe. Figuring out how to work with `.root` files without installing root in general was another challenge.
+### Challenges and Shortcomings
+The biggest challenge we came across with this Data Exploration milestone was figuring out how to extract the data
+from the two `.root` files we are working with. Initially, the plan was to convert these `.root` files into `.csv`
+files outside of Colab by first converting them into a dictionary and then a pandas dataframe and finally saving as
+a `.csv`, and then import the `.csv` files into Colab and work with those. However, for some reason, the `.csv`
+file conversion process was causing us to loose important data, so we decided to directly work with the `.root`
+files in Colab. We were able to copy and paste our old code which converted these `.root` files into a dictionary
+and then a pandas dataframe. Figuring out how to work with `.root` files without installing root in general was
+another challenge.
 
 ## Preprocessing
-### Challenges
-The biggest challenge was figuring how to convert 26 1000x1000 matrices into a nice readable dataframe. We had to decide how we wanted to represent this data in our dataframe, and once we decided that we wanted to merge all the particles from different matrices into the same rows based on stopping power and position, it became a big issue to try to make sure that we are extracting the data at the exact same places in the matrices for all features, and that the places we are extracting data would contain the least amount of useless data (all zeros would be considered useless). 
-In retrospect, it would have been easier to do this based on looking at areas across all graphs where nost data seemed to be concentrated. However, the approach we choose involved interating through matrices to find the maximum and minimum row and column where there is meaningful data, using those values to find the global minimum and maximum, evaluating at those points and creating a dataframe for each feature, recursively merging all dataframes into one, and then normalizing and removing noise and all rows of all 0s 
+While our preprocessing plan initially involved making our matrices dense (i.e. "zooming into meaningful
+data") for the purpose of making our neural net run faster, we instead decided to go with an alternative approach.
+From our Data Exploration milestone, we were able to extract 14 1000x1000 matrices such that: 
+1. rows correspond to position
+1. columns correspond to change in energy over distance (equates to Stopping power)
+1. values correspond to the number of decayed particles that were detected at that Stopping Power and Position  
+
+As we developed a better understanding of what the matrices represent, we believed it to be more beneficial
+for us to convert these matrices into tabular data form as it is something we are all more familiar and comfortable
+working with. 
+
+Before creating the 4 normalized X_train, y_train, X_test, y_test `.csv` files, we first one-hot encoded our `linear` and `circular` features. After doing so, we  then actually began the process of creating the dataframe columns (i.e. converting the matrices), which consisted of the positions, stopping power, the detection number for different particle types, and the one hot encoded columns representing circular and linear collider types. This process involved the challenge of trying to extract only the most useful parts of each matrix so that the size did not get too overwhelmingly large, while still keeping the rows and columns between matrices exactly the same indexes so that we could merge them into a dataframe smoothly based on the position and stopping power columns. 
+
+After each matrix was converted into a tabular dataform, we then merged each of them into a single tabular
+dataframe, after which we normalized all features before beginning training and testing of our model. We normalized
+the circular data and the linear data seperately because the circular data on average had many more detections then
+linear, and we did not want this to bias our model. The circular data came from a differenrt root file where its
+likely more events were run, causing the circular data to have higher counts. A model that trained on this data
+would not have generalized to the real world, so we scaled all columns seperately for circular and linear collider
+types. 
+
+After separately normalizing our circular and linear collider types, we then split and normalized our train and
+test sets separately to avoid any potential data leakage. The reason for including both X and y values in our
+normalization function is to ensure that our data is normalized separately based on the different collider shapes
+(to account for differences in the sample sizes for linear and circular collisions). After normalization of the X
+train and X test splits, we then remove the `linear` and `circular` labels to prevent our models from memorizing. 
+
+### Challenges and Shortcomings
+The biggest challenge was figuring how to convert 26 1000x1000 matrices into a nice readable dataframe. We had to
+decide how we wanted to represent this data in our dataframe, and once we decided that we wanted to merge all the
+particles from different matrices into the same rows based on stopping power and position, it became a big issue to
+try to make sure that we are extracting the data at the exact same places in the matrices for all features, and
+that the places we are extracting data would contain the least amount of useless data (all zeros would be
+considered useless). 
+
+In retrospect, it would have been easier to do this based on looking at areas across all graphs where nost data
+seemed to be concentrated. However, the approach we choose involved interating through matrices to find the maximum
+and minimum row and column where there is meaningful data, using those values to find the global minimum and
+maximum, evaluating at those points and creating a dataframe for each feature, recursively merging all dataframes
+into one, and then normalizing and removing noise and all rows of all 0s 
 
 ## Model 1: Binary Classification - Linear vs. Circular Collisions
 
