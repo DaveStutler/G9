@@ -70,7 +70,6 @@ result.
 (wip)
 
 ## Model 1: Binary Classification - Linear vs. Circular Collisions
-### Evaluation
 In our project, using a 4-layer ANN to process complex data is a reasonable choice. The Relu activation function can speed up training because it does not involve exponential operations, while the Sigmoid activation function is suitable for classification problems. It is also appropriate to use a sigmoid output layer for binary classification. Choosing an appropriate activation function and number of network layers can improve the performance of the model.
 * Data Preprocessing: In the data preprocessing stage, the types are one-hot encoded, which is a common practice for multi-class classification problems. It is also standard practice to split the dataset into 90:10 train and test sets to evaluate the performance of the model.
 * Performance Metrics: This experiment evaluates the performance of the model using mean squared error (MSE) and accuracy. These two metrics provide important information about the performance of the model on the training and test data. MSE is used to measure the prediction error of continuous output, while accuracy (Accuracy) is used to evaluate the performance of classification models. The use of these two metrics is appropriate because they provide different aspects of performance information.
@@ -88,13 +87,10 @@ First-fold cross-validation achieves the best performance in terms of MSE and R2
 * Overall, this project appears to be a reasonable modeling of a classification problem, using an appropriate neural network architecture and performance evaluation metrics. However, more detailed information, such as the choice of hyperparameters and the results of the training process, as well as a broader model performance report, would provide a more complete understanding of the quality of experiments and model performance
 
 ## Model 2: Linear Regression - Predicting the Stopping Power and Position
-### Evaluation
 
 ## Model 3: SVM - 
-### Evaluation
 
-## Evaluation of Model 4: 
-### Evaluation
+## Model 4: 
 
 # Discussion
 ## Data Exploration
