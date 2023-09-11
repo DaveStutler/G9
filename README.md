@@ -7,6 +7,7 @@ We have two datasets, `Output_File_2023_02_15.root` which includes data about th
 
 # Introduction
 
+
 # Methods
 ## Data Exploration Results
 ### Description of Data
@@ -159,15 +160,21 @@ into one, and then normalizing and removing noise and all rows of all 0s
 
 ## Model 1: Binary Classification - Linear vs. Circular Collisions
 
+
 ## Model 2: Linear Regression - Predicting the Stopping Power and Position
+
 
 ## Model 3: SVM -
 
+
 ## Model 4: 
+
 
 # Conclusion
 
+
 # Collaboration
+
 
 File description of data:
 `Collider_circular.root`: titled `yieldHistos_7p7GeV_Pion_2022_08_31.root`
