@@ -88,6 +88,9 @@ The overall mean MSE was 0.018 and the overall mean R2 was 0.414. This shows tha
 First-fold cross-validation achieves the best performance in terms of MSE and R2. This means that at this compromise, the model has the smallest prediction error and the best fit to the data.
 * Overall, this project appears to be a reasonable modeling of a classification problem, using an appropriate neural network architecture and performance evaluation metrics. However, more detailed information, such as the choice of hyperparameters and the results of the training process, as well as a broader model performance report, would provide a more complete understanding of the quality of experiments and model performance
 
+### Fitting of the data
+Our data does not appear to be overfit. For more information about this and to see the required fitting graph, please see our colab file
+
 ## Model 2: Linear Regression - Predicting the Stopping Power and Position
 
 ## Model 3: SVM - 
@@ -174,6 +177,7 @@ into one, and then normalizing and removing noise and all rows of all 0s
 
 
 # Collaboration
+
 
 
 File description of data:
