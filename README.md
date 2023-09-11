@@ -55,7 +55,8 @@ To increase the complexity of our project, we decided to make an attempt at usin
 predict stopping power and position. To do this, we use build a 5-layer linear regression ANN model. 
 * Architecture: In our 1st hidden layer we use a linear activation function than then feeds its outputs into the
 2nd hidden layer which uses a LeakyRelu activation functions with a learning rate of 0.01 (the 3rd and 4th hidden
-layers follow this same architecture). The output layer makes use of a linear activation function. To update our model weights and bias, we  use the MSE loss function.
+layers follow this same architecture). The output layer makes use of a linear activation function. To update our
+model weights and bias, we  use the MSE loss function.
 * We check the MSE and accurary_score for performance, as well as illustrating the classification report on our
 result.
 
@@ -94,6 +95,20 @@ First-fold cross-validation achieves the best performance in terms of MSE and R2
 
 # Discussion
 ## Data Exploration
+The goal in our Data Exploration phase was 3-fold:
+1. figure out a way to access the data in our two `.root` files
+1. figure out what features were common in both files
+1. discover meaning in the data and their respective graphs
+
+After extracting data from the `.root` files and making pandas dataframes out of them is how we were able to figure
+out that our dataframe had only 2 rows (one for circular and the other for spherical collisions) each of which
+contained 1000x1000 matrices representing data from over 91,000 collisions.
+
+Through careful analysis of the graphs these matrices made, in addition to previous knowledge and experience one of our group members had with similar datasets, we were able to deduce what the rows, columns, and values of the matrices represented:
+1. rows correspond to position
+1. columns correspond to change in energy over distance (equates to Stopping power)
+1. values correspond to the number of decayed particles that were detected at that Stopping Power and Position
+
 ### Challenges and Shortcomings
 The biggest challenge we came across with this Data Exploration milestone was figuring out how to extract the data
 from the two `.root` files we are working with. Initially, the plan was to convert these `.root` files into `.csv`
@@ -107,14 +122,10 @@ another challenge.
 ## Preprocessing
 While our preprocessing plan initially involved making our matrices dense (i.e. "zooming into meaningful
 data") for the purpose of making our neural net run faster, we instead decided to go with an alternative approach.
-From our Data Exploration milestone, we were able to extract 14 1000x1000 matrices such that: 
-1. rows correspond to position
-1. columns correspond to change in energy over distance (equates to Stopping power)
-1. values correspond to the number of decayed particles that were detected at that Stopping Power and Position  
-
-As we developed a better understanding of what the matrices represent, we believed it to be more beneficial
-for us to convert these matrices into tabular data form as it is something we are all more familiar and comfortable
-working with. 
+From our Data Exploration milestone, we were able to extract 14 1000x1000 matrices.
+ 
+After careful consideration, we believed it to be more beneficial for us to convert these matrices into tabular
+data form as it is something we are all more familiar and comfortable working with. 
 
 Before creating the 4 normalized X_train, y_train, X_test, y_test `.csv` files, we first one-hot encoded our `linear` and `circular` features. After doing so, we  then actually began the process of creating the dataframe columns (i.e. converting the matrices), which consisted of the positions, stopping power, the detection number for different particle types, and the one hot encoded columns representing circular and linear collider types. This process involved the challenge of trying to extract only the most useful parts of each matrix so that the size did not get too overwhelmingly large, while still keeping the rows and columns between matrices exactly the same indexes so that we could merge them into a dataframe smoothly based on the position and stopping power columns. 
 
