@@ -61,7 +61,7 @@ model weights and bias, we  use the MSE loss function.
 * We check the MSE and accurary_score for performance, as well as illustrating the classification report on our
 result.
 
-## Model 3: SVM - 
+## Model 3: Binary Classification Using SVM - Linear vs. Circular Collisions
 ### Description
 
 ## Model 4:
@@ -97,7 +97,7 @@ Our data does not appear to be overfit. For more information about this and to s
 
 ## Model 2: Linear Regression - Predicting the Stopping Power and Position
 
-## Model 3: SVM - 
+## Model 3: Binary Classification Using SVM - Linear vs. Circular Collisions
 
 ## Model 4: 
 
@@ -169,10 +169,14 @@ into one, and then normalizing and removing noise and all rows of all 0s
 Seeing as our data consists of two different types of particle collisions, attempting to create a model that
 classified between circular and spherical collisions was a no-brainer. As mentioned in the [description of this
 model](#model-1-binary-classification---linear-vs-circular-collisions), we created a 6-layer ANN. Using 12 features
-in our dataframe (excluding `circular` and `spherical` labels), we used this model to predict whether the datapoints were consistent with that of a linear collision or a spherical collision. 
+in our dataframe (excluding `circular` and `spherical` labels), we used this model to predict whether the datapoints were consistent with
+that of a linear collision or a spherical collision. 
 
 ### Challenges and Shortcomings
-As our results show, after only running for a single epoch our model already displayed a high accuracy rate of 91%. Since we couldn't believe our model was performing so well from the jump, we performed tests to pinpoint whether our model had any defects, or if the way we performed our preprocessing was faulty. To do this, we ran p-value tests to see how statistically significant the difference is between the column values for linear and circular collisions.
+As our results show, after only running for a single epoch our model already displayed a high accuracy rate of 91%. Since we couldn't
+believe our model was performing so well from the jump, we performed tests to pinpoint whether our model had any defects, or if the way
+we performed our preprocessing was faulty. To do this, we ran p-value tests to see how statistically significant the difference is
+between the column values for linear and circular collisions.
 
 Our p-value tests showed that there were several features with a p-value of zero (or close to zero) meaning there are strong statistical
 differences between our data. This is consistent with the experiments performed to retrieve these data values as they look for
@@ -185,7 +189,7 @@ them to make accurate predictions, even after only a few epochs.
 ## Model 2: Linear Regression - Predicting the Stopping Power and Position
 
 
-## Model 3: SVM -
+## Model 3: Binary Classification Using SVM - Linear vs. Circular Collisions
 
 
 ## Model 4: 
