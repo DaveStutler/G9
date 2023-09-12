@@ -63,7 +63,9 @@ result.
 
 ## Model 3: Binary Classification Using SVM - Linear vs. Circular Collisions
 ### Description
-
+To further classifying the Linear vs Circular Collisions, we attempt at using a SVM model to illustrate the boundary between the 2 particle collider. To do this, we isolate 2 features with the highest correlation between them and illustrate an contour graph. 
+* **Architecture**: In our svm model, we take features `dEdx_DeuteronPlus_Isolated;1` and `dEdx_AlphaPlus_Isolated;1` because they have cor = 0.75, the highest correlation between any features, with Radial Basis Function Kernel (RBF) function to as our kernel.
+* We check the accurary_score for performance, as well as illustrating the classification report on our result.
 ## Model 4:
 ### Description
 
