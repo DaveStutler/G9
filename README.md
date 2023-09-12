@@ -98,7 +98,6 @@ First-fold cross-validation achieves the best performance in terms of MSE and R2
 Our data does not appear to be overfit. For more information about this and to see the required fitting graph, please see our colab file
 
 ## Model 2: Linear Regression - Predicting the Stopping Power and Position
-Model 2: Linear Regression - Predicting Braking Force and Position
 In our project, it makes perfect sense to use a 5-layer ANN to handle complex data. The linear activation function is one of the simplest activation functions. It only performs a linear combination of inputs and weights, so the calculation is very fast, speeding up the overall model. The Leaky ReLU activation function solves the "neuron death" problem by having a small slope on negative inputs (usually a small constant, such as 0.01) so that the gradient does not disappear completely in these regions, thus aiding gradient propagation and training Deeper neural networks. Its output is not strictly zero in the negative region, which helps the network learn and converge, and this activation function can fit the data better in some cases because it has non-zero values over a wider range of input gradients.
 To sum up, choosing the appropriate activation function and number of network layers can improve the performance of the model.
 
@@ -114,6 +113,7 @@ Overall mean MSE and R2: The overall mean MSE is 0.018 and the overall mean R2 i
 Collapse of the best MSE and R2 scores: The first cross-validation achieves the best performance in terms of MSE and R2. This means that under this trade-off, the model has the smallest prediction error and best fits the data.
 Overall, the project appears to be a reasonable modeling of the classification problem using appropriate neural network architectures and performance evaluation metrics. However, more detailed information, such as the selection of hyperparameters and the results of the training process, as well as more extensive reporting of model performance, would provide a more complete understanding of the experimental quality and model performance
 Data fitting: Please consult our collab file
+
 ## Model 3: Binary Classification Using SVM - Linear vs. Circular Collisions
 
 ## Model 4: 
