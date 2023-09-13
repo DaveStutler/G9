@@ -3,7 +3,12 @@
 # Analysis on the Particle Collider Dataset
 
 # Abstract
-We have two datasets, `Output_File_2023_02_15.root` which includes data about the linear collisions and `yieldHistos_7p7GeV_Pion_2022_08_31.root` which contains data about circular. The project idea is to analyze the datasets on the shape of explosions from a particle collider in order to determine what aspects of the particles used and conditions are common between collider and detector types. These findings would be significant because they can help researchers determine the collider type they should use when looking to collide heavy ion particles. We are not fully certain on what machine learning model we will use, but are considering unsupervised learning by applying a Convolutional neural network (CNN) to the data to identify correlations and connections between data points. 
+We have two datasets, `Output_File_2023_02_15.root` which includes data about the linear collisions and `yieldHistos_7p7GeV_Pion_2022_08_31.root` which contains data about circular. The project idea is to analyze the datasets on the shape of explosions from a particle collider in order to determine what aspects of the particles used and conditions are common between collider and detector types. These findings would be significant because they can help researchers determine the collider type they should use when looking to collide heavy ion particles.
+Two problems we intend to solve using Superlearning techniques include:
+1. classifying linear and spherical collisions 
+    1. using SVM and binary classification models
+1. predicting count of decayed particles based on 3 features (stopping power, position, and collision type)
+    1. using a regression model
 
 # Introduction
 
@@ -50,7 +55,13 @@ features of the particles to classify.
 * We check the MSE and accurary_score for performance, as well as illustrating the classification report on our
 result.
 
-## Model 2: Linear Regression - Predicting the Count of Each Decayed Particle
+## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
+### Description
+To further classifying the Linear vs Circular Collisions, we attempt at using a SVM model to illustrate the boundary between the 2 particle collider. To do this, we isolate 2 features with the highest correlation between them and illustrate an contour graph. 
+* **Architecture**: In our svm model, we take features `dEdx_DeuteronPlus_Isolated;1` and `dEdx_AlphaPlus_Isolated;1` because they have cor = 0.75, the highest correlation between any features, with Radial Basis Function Kernel (RBF) function to as our kernel.
+* We check the accurary_score for performance, as well as illustrating the classification report on our result.
+
+## Model 3: Regression - Predicting the Count of Each Decayed Particle
 ### Description
 To increase the complexity of our project, we decided to make an attempt at predicting the count of decayed
 particles detected at a certain stopping power and position under either a circular or linear collision. To do
@@ -62,11 +73,6 @@ model weights and bias, we  use the MSE loss function.
 * We check the MSE and accurary_score for performance, as well as illustrating the classification report on our
 result.
 
-## Model 3: Binary Classification Using SVM - Linear vs. Circular Collisions
-### Description
-To further classifying the Linear vs Circular Collisions, we attempt at using a SVM model to illustrate the boundary between the 2 particle collider. To do this, we isolate 2 features with the highest correlation between them and illustrate an contour graph. 
-* **Architecture**: In our svm model, we take features `dEdx_DeuteronPlus_Isolated;1` and `dEdx_AlphaPlus_Isolated;1` because they have cor = 0.75, the highest correlation between any features, with Radial Basis Function Kernel (RBF) function to as our kernel.
-* We check the accurary_score for performance, as well as illustrating the classification report on our result.
 ## Model 4:
 ### Description
 
@@ -99,7 +105,9 @@ First-fold cross-validation achieves the best performance in terms of MSE and R2
 ### Fitting of the data
 Our data does not appear to be overfit. For more information about this and to see the required fitting graph, please see our colab file
 
-## Model 2: Linear Regression - Predicting the Count of Each Decayed Particle
+## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
+
+## Model 3: Regression - Predicting the Count of Each Decayed Particle
 In our project, it makes perfect sense to use a 5-layer ANN to handle complex data. The linear activation function is one of the simplest activation functions. It only performs a linear combination of inputs and weights, so the calculation is very fast, speeding up the overall model. The Leaky ReLU activation function solves the "neuron death" problem by having a small slope on negative inputs (usually a small constant, such as 0.01) so that the gradient does not disappear completely in these regions, thus aiding gradient propagation and training Deeper neural networks. Its output is not strictly zero in the negative region, which helps the network learn and converge, and this activation function can fit the data better in some cases because it has non-zero values over a wider range of input gradients.
 To sum up, choosing the appropriate activation function and number of network layers can improve the performance of the model.
 
@@ -115,8 +123,6 @@ For the four cross-validation folds (Folds), the MSE for each fold is essentiall
 * Collapse of the best MSE and R2 scores: The first cross-validation achieves the best performance in terms of MSE and R2. This means that under this trade-off, the model has the smallest prediction error and best fits the data.
 Overall, the project appears to be a reasonable modeling of the classification problem using appropriate neural network architectures and performance evaluation metrics. However, more detailed information, such as the selection of hyperparameters and the results of the training process, as well as more extensive reporting of model performance, would provide a more complete understanding of the experimental quality and model performance
 * Data fitting: Please consult our collab file
-
-## Model 3: Binary Classification Using SVM - Linear vs. Circular Collisions
 
 ## Model 4: 
 
@@ -215,7 +221,10 @@ With this knowledge, we were able to conclude that there was no issue with our p
 classification problem was simply easy. Since our data is significantly different for each collision type, our
 model was able to hone in on these trends and them to make accurate predictions, even after only a few epochs. 
 
-## Model 2: Linear Regression - Predicting the Count of Each Decayed Particle
+## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
+
+
+## Model 3: Regression - Predicting the Count of Each Decayed Particle
 The way our dataframe reads is that at a specific stopping power and position (under either a circular or linear
 collision), it gives the number of all decayed particles detected. As such, since our classification problem appears to be simple, with our second model we wanted to explore answering the question of how we could predict the number of decayed particles in different scenarios depending on stopping power, position, and collision type (linear or circular). 
 
@@ -232,9 +241,6 @@ With this model we did not come across any huge challenges or shortcomings. Our 
 1. making sure our training, testing, and validation data sets had equal samples of linear and circular collisions
 
 we remain confident that our models and the training, validation, and testing sets are robust and as unbiased as possible.
-
-## Model 3: Binary Classification Using SVM - Linear vs. Circular Collisions
-
 
 ## Model 4: 
 
