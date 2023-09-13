@@ -77,7 +77,7 @@ The results of our data preprocessing phase include:
 1. Extraction of 13 features shared from our circular and spherical `.root` files
 1. Conversion of 13 1000x1000 matrices into a singular tabular pandas dataframe
     1. columns consisting of position, stopping power, and other linear and circular features
-1. Three normalized `.csv` files: `norm_train.csv`, `norm_test.csv`, `norm_val.csv`, `y_test.csv`
+1. Three normalized `.csv` files: `norm_train.csv`, `norm_test.csv`, and `norm_val.csv`
 
 ## Model 1: Binary Classification - Linear vs. Circular Collisions
 In our project, using a 10-layer ANN to process complex data is a reasonable choice. The Relu activation function can speed up training because it does not involve exponential operations, while the Sigmoid activation function is suitable for classification problems. It is also appropriate to use a sigmoid output layer for binary classification. Choosing an appropriate activation function and number of network layers can improve the performance of the model.
