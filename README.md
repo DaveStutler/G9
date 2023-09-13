@@ -4,11 +4,15 @@
 
 # Abstract
 We have two datasets, `Output_File_2023_02_15.root` which includes data about the linear collisions and `yieldHistos_7p7GeV_Pion_2022_08_31.root` which contains data about circular. The project idea is to analyze the datasets on the shape of explosions from a particle collider in order to determine what aspects of the particles used and conditions are common between collider and detector types. These findings would be significant because they can help researchers determine the collider type they should use when looking to collide heavy ion particles.
-Two problems we intend to solve using Superlearning techniques include:
+
+Two problems we intend to solve using supervised learning techniques include:
 1. classifying linear and spherical collisions 
     1. using SVM and binary classification models
 1. predicting count of decayed particles based on 3 features (stopping power, position, and collision type)
     1. using a regression model
+
+For unsupervised learning, we will experiment with generators where our goal will be to generate fake data that
+matches our real data distribution and is indistinguishable from our real data.
 
 # Introduction
 
