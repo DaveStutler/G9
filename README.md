@@ -64,7 +64,9 @@ result.
 
 ## Model 3: Binary Classification Using SVM - Linear vs. Circular Collisions
 ### Description
-
+To further classifying the Linear vs Circular Collisions, we attempt at using a SVM model to illustrate the boundary between the 2 particle collider. To do this, we isolate 2 features with the highest correlation between them and illustrate an contour graph. 
+* **Architecture**: In our svm model, we take features `dEdx_DeuteronPlus_Isolated;1` and `dEdx_AlphaPlus_Isolated;1` because they have cor = 0.75, the highest correlation between any features, with Radial Basis Function Kernel (RBF) function to as our kernel.
+* We check the accurary_score for performance, as well as illustrating the classification report on our result.
 ## Model 4:
 ### Description
 
@@ -98,6 +100,21 @@ First-fold cross-validation achieves the best performance in terms of MSE and R2
 Our data does not appear to be overfit. For more information about this and to see the required fitting graph, please see our colab file
 
 ## Model 2: Linear Regression - Predicting the Count of Each Decayed Particle
+In our project, it makes perfect sense to use a 5-layer ANN to handle complex data. The linear activation function is one of the simplest activation functions. It only performs a linear combination of inputs and weights, so the calculation is very fast, speeding up the overall model. The Leaky ReLU activation function solves the "neuron death" problem by having a small slope on negative inputs (usually a small constant, such as 0.01) so that the gradient does not disappear completely in these regions, thus aiding gradient propagation and training Deeper neural networks. Its output is not strictly zero in the negative region, which helps the network learn and converge, and this activation function can fit the data better in some cases because it has non-zero values over a wider range of input gradients.
+To sum up, choosing the appropriate activation function and number of network layers can improve the performance of the model.
+
+* Data Preprocessing: It is common standard practice to split the data set into 90:10 training and test sets to evaluate the performance of the model.
+* Performance metrics: This experiment uses mean squared error (MSE) and accuracy to evaluate the model's performance. These two metrics provide important information about the model's performance on training and test data. MSE is used to measure the prediction error of continuous output, while accuracy is used to evaluate the performance of the classification model. It is appropriate to use these two metrics because they provide information on different aspects of performance.
+* Classification Reports: Generating classification reports was mentioned, which is a good practice. Classification reports usually include metrics such as precision, recall, F1 score, etc. These metrics are very helpful in understanding the performance of the model in each category. This can help determine whether the model performs better or worse in certain categories.
+* Heat map: more intuitively shows the correlation and non-correlation between data.
+* Tuning and improvements: While some description of the model is provided, there is no mention of hyperparameter tuning or other steps for further improvement in the lab report. In practical applications, multiple attempts and adjustments are usually required to optimize model performance.
+
+For the four cross-validation folds (Folds), the MSE for each fold is essentially the same, around 0.018. The average MSE value is 0.018, which means that the average prediction error of the model is relatively small. MSE measures the difference between the model's predicted value and the actual value. The smaller the MSE, the better the model's prediction performance.
+* R2 score analysis: For the four cross-validation folds, the R2 scores for each fold ranged from 0.413 to 0.416. The average R2 score is 0.414, which is a relatively stable value. The R2 score measures how well the model fits the observed data; the closer it is to 1, the better the fit.
+* Overall mean MSE and R2: The overall mean MSE is 0.018 and the overall mean R2 is 0.414. This shows that the performance of the model is stable on the entire data set and the fitting effect of the data is better.
+* Collapse of the best MSE and R2 scores: The first cross-validation achieves the best performance in terms of MSE and R2. This means that under this trade-off, the model has the smallest prediction error and best fits the data.
+Overall, the project appears to be a reasonable modeling of the classification problem using appropriate neural network architectures and performance evaluation metrics. However, more detailed information, such as the selection of hyperparameters and the results of the training process, as well as more extensive reporting of model performance, would provide a more complete understanding of the experimental quality and model performance
+* Data fitting: Please consult our collab file
 
 ## Model 3: Binary Classification Using SVM - Linear vs. Circular Collisions
 
