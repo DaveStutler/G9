@@ -33,6 +33,16 @@ decided to leave the y axis inverted when graphing in order to make the y axis s
 help with our analysis. Some interesting trends we noticed on these graphs were a small variance along the axis for
 pions and deuteron and proton minus distributions and logarithmic correlations with other distributions.
 
+Plot of counts collected for ProtonMinus at various stopping powers and positions in linear collisions
+
+<img src="ProtonMinus-Linear.png" width="450" />
+
+Plot of counts collected for ProtonMinus at various stopping powers and positions in circular collisions
+
+<img src="ProtonMinus-Circular.png" width="450" />
+
+
+
 ## Data Preprocessing (steps)
 1. Analyze original linear and circular `.root` files to determine which features coincide in both files
 1. Convert 13 1000x1000 matrices into tabular data form
@@ -228,7 +238,7 @@ model was able to hone in on these trends and them to make accurate predictions,
 The way our dataframe reads is that at a specific stopping power and position (under either a circular or linear
 collision), it gives the number of all decayed particles detected. As such, since our classification problem appears to be simple, with our second model we wanted to explore answering the question of how we could predict the number of decayed particles in different scenarios depending on stopping power, position, and collision type (linear or circular). 
 
-To split our X and y training, testing, and validation sets, our X uses the linear, circular, stopping power, and position features while our y is the different decayed particles.
+To split our X and y training, testing, and validation sets, our X uses the linear, circular, stopping power, and position features while our y is the count of the 13 different decayed particles [mentioned here in our abstract](#abstract).
 
 As our results show, our linear regression model was able to reach its best model after epoch 2 and our testing
 MSE came out to be around 0.006, which indicates to us that our model did pretty well with its predictions.
