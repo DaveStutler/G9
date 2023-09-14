@@ -83,7 +83,8 @@ To further classifying the Linear vs Circular Collisions, we attempt at using a 
 * Architecture: In our svm model, we take features `dEdx_PionPlus_Isolated;1` and `dEdx_KaonPlus_Isolated;1`. With Radial Basis Function Kernel (RBF) function to as our kernel.
 * We check the accurary_score for performance, as well as illustrating classification report and the confusion matrix for model performance.
 
-## Model 3: Regression - Predicting the Count of Each Decayed Particle
+## Model 3: Regression -Predicting the counts of particles based on the position and stopping power at which they were detected as well as the collider type
+Predicting the Count of Each Decayed Particle
 ### Description
 To increase the complexity of our project, we decided to make an attempt at predicting the count of decayed
 particles detected at a certain stopping power and position under either a circular or linear collision. To do
