@@ -58,7 +58,7 @@ Plot of counts collected for ProtonMinus at various stopping powers and position
 3. Normalizing and splitting 
     1. Split `train`, `validation` and `test` sets with a split ratio of 70:10:20, respectively
     2. Normalize `train`, `validation` and `test` sets separately
-    3. Within the normalizer function: normalize `circular` and `linear` elements separately and ensure and equal number of each is in each training, testing, and val set\
+    3. Within the normalizer function: normalize `circular` and `linear` elements separately and ensure and equal number of each is in each training, testing, and val set
     4. Within the normalizer function: Threshold very small values and delete rows with no significant data
 
 
@@ -71,6 +71,9 @@ In hopes of predicting the type of collider, either circular or linear, we use a
 * The validation, training, and testing data were all normalized seprately and there was no possibility of data leakage
 * There was also an equal number of both classes in all sets in order to avoid bais
 * We check the accurary_score for performance, as well as illustrating the classification report and a confusion matrix
+* ### K-folds
+* In order to test the models consistancy accross unseen data, we tested it on 5 folds in which a random section of the training data was sectioned off as validation data and normalized seperately.
+* The goal was to try to get a high mean and low sd to indicate that our model has low variation and is consistantly accurate at predicting unseen data
 
 ## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
 ### Description
