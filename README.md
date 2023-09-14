@@ -131,22 +131,27 @@ The results of our data preprocessing phase include:
 1. Three normalized `.csv` files: `norm_train.csv`, `norm_test.csv`, and `norm_val.csv`
 
 ## Model 1: Binary Classification - Linear vs. Circular Collisions
-In our project, using a 10-layer ANN to process complex data is a reasonable choice. The Relu activation function can speed up training because it does not involve exponential operations, while the Sigmoid activation function is suitable for classification problems. It is also appropriate to use a sigmoid output layer for binary classification. Choosing an appropriate activation function and number of network layers can improve the performance of the model.
-* Data Preprocessing: In the data preprocessing stage, the types are one-hot encoded, which is a common practice for multi-class classification problems. It is also standard practice to split the dataset into 90:10 train and test sets to evaluate the performance of the model.
-* Performance Metrics: This experiment evaluates the performance of the model using mean squared error (MSE) and accuracy. These two metrics provide important information about the performance of the model on the training and test data. MSE is used to measure the prediction error of continuous output, while accuracy (Accuracy) is used to evaluate the performance of classification models. The use of these two metrics is appropriate because they provide different aspects of performance information.
-* Classification Report: Generating a classification report is mentioned, which is a good practice. Classification reports usually include indicators such as precision, recall, F1 score, etc., which are very helpful for understanding the performance of the model on each category. This can help determine if the model is performing better or worse on certain categories.
-* Tuning and Improvement: While some descriptions of the model are provided, no hyperparameter tuning or other steps for further improvement are mentioned in the lab report. In practical applications, multiple trials and adjustments are usually required to optimize model performance.
-* For the four cross-validation folds (Folds), the MSE of each fold is very close, all around 0.018.
-The average MSE value is 0.018, which means that the average prediction error of the model is relatively small. MSE measures the difference between the predicted value of the model and the actual value, and a smaller MSE indicates a better predictive performance of the model.
-* R2 Score Analysis:
-For the four cross-validation folds, the R2 scores for each fold range from 0.413 to 0.416.
-The average R2 score is 0.414, which is a relatively stable value. The R2 score measures how well the model fits the observed data, and the closer to 1, the better the fit.
-* Overall average MSE and R2:
-The overall mean MSE was 0.018 and the overall mean R2 was 0.414. This shows that the performance of the model on the entire data set is also stable, and the fitting effect on the data is better.
-* Collapse of best MSE and R2 scores:
-First-fold cross-validation achieves the best performance in terms of MSE and R2. This means that at this compromise, the model has the smallest prediction error and the best fit to the data.
-* Overall, this project appears to be a reasonable modeling of a classification problem, using an appropriate neural network architecture and performance evaluation metrics. However, more detailed information, such as the choice of hyperparameters and the results of the training process, as well as a broader model performance report, would provide a more complete understanding of the quality of experiments and model performance
-* 
+In our project, using a 10-layer ANN is a reasonable choice to handle complex data. The Relu activation function can speed up training because it does not involve exponential operations, while the Sigmoid activation function is suitable for classification problems. It is also appropriate to use a sigmoid output layer for binary classification. Choosing the appropriate activation function and number of network layers can improve the performance of the model.
+
+* Data preprocessing: In the data preprocessing stage, types are one-hot encoded, which is a common practice for multi-class classification problems. It is also standard practice to split the dataset into 90:10 training and test sets to evaluate the performance of the model.
+* Performance metrics: This experiment uses mean squared error (MSE) and accuracy to evaluate the model's performance. These two metrics provide important information about the model's performance on training and test data. MSE is used to measure the prediction error of continuous output, while accuracy is used to evaluate the performance of the classification model. It is appropriate to use these two metrics because they provide information on different aspects of performance.
+* Classification Reports: Generating classification reports was mentioned, which is a good practice. Classification reports usually include metrics such as precision, recall, F1 score, etc. These metrics are very helpful in understanding the performance of the model on each category. This can help determine whether the model performs better or worse on certain categories.
+* Tuning and improvements: While some description of the model is provided, there is no mention of hyperparameter tuning or other steps for further improvement in the lab report. In practical applications, multiple attempts and adjustments are usually required to optimize model performance.
+It can be seen from the Training and Testing Accuracy table that when epoch is between 0 and 5, as the number of epochs increases, the model Training Accuracy increases rapidly, easily reaching more than 0.98, surpassing the Test Accuracy. When epoch is between 5 and 25, Training Accuracy does not fluctuate much.
+
+* For cross-validation folds (Folds), we will normalize validation and training separately. Depending on how we define it, the exact number of train and val instances for each split will vary slightly. Which removes all rows without important data when normalizing the function. However, the change will be very small and will not have a big impact on accuracy and MSE scores.
+
+* When rating Accuracy, the five results are:
+  0.9537399546672162,
+  0.9606580829756796,
+  0.9835313737752762,
+  0.9415611376375337,
+  0.9274341702388242,
+* Calculated Overall Average Accuracy: 0.953 (sd = 0.019).
+
+* Overall, the project appears to be a reasonable modeling of the classification problem using appropriate neural network architectures and performance evaluation metrics. However, more detailed information, such as the selection of hyperparameters and the results of the training process, as well as more extensive reporting of model performance, would provide a more complete understanding of the experimental quality and model performance
+Data Fitting
+Our data does not appear to be overfitting. For more information on this and to view the required fitted plots, please see our colab documentation
 * Finally, the test results given include the mean square error (MSE) and accuracy of the model on the test set. These metrics are used to evaluate a model's performance on unseen data. In the test results, the test accuracy is about 0.98, indicating that the model performs very well on the test set. The mean square error (MSE) is approximately 0.014, indicating that the average error between the model's predicted values and the actual values is small. The best accuracy of the model on the validation set was 0.954, and the model performed best when training was stopped.
 
 ### Fitting of the data
