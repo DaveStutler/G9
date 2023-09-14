@@ -70,7 +70,7 @@ In hopes of predicting the type of collider, either circular or linear, we use a
 * We also incorporated validation data into our training in order to find the best models for ModelCheckpoint.
 * The validation, training, and testing data were all normalized seprately and there was no possibility of data leakage
 * There was also an equal number of both classes in all sets in order to avoid bais
-* We check the accurary_score for performance, as well as illustrating the classification report and a confusion matrix
+* We tested the model on unseen values and report the accurary_score, classification report, and a confusion matrix as well as the epoch at which we found our best model based on ModelCheckpoint and EarlyStopping
 * ### K-folds
 * In order to test the models consistancy accross unseen data, we tested it on 5 folds in which a random section of the training data was sectioned off as validation data and normalized seperately.
 * The goal was to try to get a high mean and low sd to indicate that our model has low variation and is consistantly accurate at predicting unseen data
@@ -87,14 +87,29 @@ To increase the complexity of our project, we decided to make an attempt at pred
 particles detected at a certain stopping power and position under either a circular or linear collision. To do
 this, we use build a 5-layer linear regression ANN model. 
 * Architecture: In our 1st hidden layer we use a linear activation function than then feeds its outputs into the
-2nd hidden layer which uses a LeakyRelu activation functions with a learning rate of 0.01 (the 3rd and 4th hidden
+2nd hidden layer which uses a LeakyRelu activation functions (the 3rd and 4th hidden
 layers follow this same architecture). The output layer makes use of a linear activation function. To update our
 model weights and bias, we  use the MSE loss function.
-* We check the MSE and accurary_score for performance, as well as illustrating the classification report on our
-result.
+* Once again, we used EarlyStopping and ModelCheckpoint to ensure we were getting the best weights possible and not spending more time training than the model needed.
+* We also incorporated validation data into our training in order to find the best models for ModelCheckpoint.
+* The validation, training, and testing data were all normalized seprately and there was no possibility of data leakage
+* We tested our model on unseen values and reported the MSE as well as the epoch at which we found our best model based on ModelCheckpoint and EarlyStopping
+* ### K-folds
+* In order to test the models consistancy accross unseen data, we tested it on 5 folds in which a random section of the training data was sectioned off as validation data and normalized seperately.
+* The goal was to try to get a high mean and low sd to indicate that our model has low variation and is consistantly accurate at predicting unseen data
 
-## Model 4:
+## Model 4: Data Generator using encoding and decoding
 ### Description
+Running experiments in nuclear colliders is expensive, so in order to help scientist who want to generate synthetic data to model this procress, we tried to make a generator using an encoding and decoding VAE model.
+* Preprocessing: to decrease the complexity of our data, we decided to only look at one feature, namely 'dEdx_PionPlus_Isolated;1'.
+*     we created a new df that contained only position, stopping power, and this element at indexes where its counts were non zero and we normalized all columns 
+* Architecture: Most of the architecture was built through hours of trial an error. The final model includes 6 encoder layers and 5 decoder layers with a latent space of 10 dimensions.
+* 'MSE' was used to measure loss.
+### Testing 
+* Because this is an unsupervized learning method, testing was not as straight forward as usual.
+* We used visual means of assessing the fit by plotting our generated sample in a 3d scattor plot with the original preprocessed data
+* We also used statistical tests to see how likely it was that these two samples came from the same population
+* Finally, we implemented DBSCAN clustering on a dataset that contained the original data as well as our generated samples to see if the generated samples would be classified as either belonging to another cluster, or anomalies.
 
 # Results
 ## Data Preprocessing 
