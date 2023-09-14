@@ -62,14 +62,15 @@ Plot of counts collected for ProtonMinus at various stopping powers and position
     4. Within the normalizer function: Threshold very small values and delete rows with no significant data
 
 
-## Model 1: Binary Classification - Linear vs. Circular Collisions
+## Model 1: Binary Classification - Linear vs. Circular Collider Types
 ### Description
-In hopes of predicting the type of collider, either circular or linear, we use a 10-layer ANN to predict the type
-that we one-hot encoded during our pre-processing phase. This feed forward neural net base on the selected
-features of the particles to classify.
-* Architecture: we use Relu activation functions for efficent runtime. We also use Sigmoid activation function in our output layer to classify the 2 groups, and use Binary Logarithmic Loss function to update our model weights and bias. We split our dataset into 90:10 of propotion, with linear and circular columns as our target and every other columns as our features.
-* We check the MSE and accurary_score for performance, as well as illustrating the classification report on our
-result.
+In hopes of predicting the type of collider, either circular or linear, we use a 10-layer ANN that takes in the feature counts, positions, and stopping powers and classifies the data as one of our one-hot-encodered collider type values
+* Architecture: we use Relu activation functions for efficent runtime. We also use Sigmoid activation function in our output layer to classify the 2 groups, and use the binary_crossentropy function to update our model weights and bias. We split our dataset into 90:10 of propotion, with linear and circular columns as our target and every other columns as our features.
+* We incorportated EarlyStopping and ModelCheckpoint to ensure we were getting the best weights possible and not spending more time training than the model needed.
+* We also incorporated validation data into our training in order to find the best models for ModelCheckpoint.
+* The validation, training, and testing data were all normalized seprately and there was no possibility of data leakage
+* There was also an equal number of both classes in all sets in order to avoid bais
+* We check the accurary_score for performance, as well as illustrating the classification report and a confusion matrix
 
 ## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
 ### Description
