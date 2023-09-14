@@ -267,16 +267,18 @@ With this model we did not come across any huge challenges or shortcomings. Our 
 we remain confident that our models and the training, validation, and testing sets are robust and as unbiased as possible.
 
 ## Model 4: 
-
-
+I really wanted to practice unsupervized learning methods and I thought a data generator would be a cool thing to implement since it has real world applications such as helping scientists that do not have access to their own nuclear colliders to run experiments. In this model we used a encoder decoder VAE to generate 500 random samples of data. Based on the plots, the sampled data seems to closely tend towards the denser parts of the dataset scatter plot, which indicates that our model is doing what its suppose to do
+### Challenges and Shortcomings
+I initially spent a long time trying to figure out cool trends in the data using DBSCAN clustering. My original goal was to classify each of the particles into broader groups based on identified clusters. After spending days preprocessing the data for this task and futzing with parameters, I concluded that there are no interesting trends or clusters to be observed.
+That being said, I wish I would have spent less time on that so that I could have spent more time on perfecting the generator. The generator was a lot of work because I came in with no background knowledge and had to figure out everything. Optimizing the parameters was very difficult and I still do not think my parameters are very good. It was very frustering to see how smooth the dataset distribution is, and yet the generated samples were not able to match it very closely no matter what I did. Another issue was that I really didn't know how to test it. I do not think the tests I was running are industry standard; they just made the most sense to me as a way to see how closely the sample matched the data
 # Conclusion
 (write here)
 
 # Collaboration
-* Darian Lee: collaborated with Kayla in implementing the K-fold classification; extract the data from the root files; preprocessed the data; built model 1, 3, and 4. 
+* Darian Lee: extracted the data from the root files; preprocessed and analysied all data; built models 1, 3, and 4, collaborated with Kayla in implementing the K-fold validation, helped write about models 1, 3, and 4 in final report
 * Huy Nguyen: collaborated with Kahee in implementing the SVM model classification(model 2); detail description and result for model 2.
 * Vincent Serracino: Introduced the particle collider dataset, knowledgeable about particle collider, our team result's interpreter in term of high level physics
-* Kayla M. Araiza: collaborated with Darian in implementing K-Fold classfication, restructor the README file, responsible for final report.
+* Kayla M. Araiza: collaborated with Darian in implementing K-Fold validation, restructor the README file, responsible for final report.
 * Mujun Zhang: organize and editing README file for Preprocessing & First Model Building milestone.
 * Kahee Chan: collaborated with Huy in implementing the SVM model classification(model 2); detail description, discussion, and result for model 2; responsible for visual report on the model
 
