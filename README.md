@@ -88,7 +88,7 @@ To further classifying the Linear vs Circular Collisions, we attempt at using a 
 ### Description
 To increase the complexity of our project, we decided to make an attempt at predicting the count of decayed
 particles detected at a certain stopping power and position under either a circular or linear collision. To do
-this, we use build a 5-layer linear regression ANN model. 
+this, we use build a regression ANN model. 
 * Architecture: In our 1st hidden layer we use a linear activation function than then feeds its outputs into the
 2nd hidden layer which uses a LeakyRelu activation functions (the 3rd and 4th hidden
 layers follow this same architecture). The output layer makes use of a linear activation function. To update our
@@ -121,54 +121,35 @@ The results of our data preprocessing phase include:
 1. Extraction of 13 features shared from our circular and spherical `.root` files
 1. Conversion of 13 1000x1000 matrices into a singular tabular pandas dataframe
     1. columns consisting of position, stopping power, and other linear and circular features
-1. Three normalized `.csv` files: `norm_train.csv`, `norm_test.csv`, and `norm_val.csv`
+1. 'holygrail'.csv file which contains all relivant data points as a dataframe
 
-## Model 1: Binary Classification - Linear vs. Circular Collisions
-In our project, using a 10-layer ANN to process complex data is a reasonable choice. The Relu activation function can speed up training because it does not involve exponential operations, while the Sigmoid activation function is suitable for classification problems. It is also appropriate to use a sigmoid output layer for binary classification. Choosing an appropriate activation function and number of network layers can improve the performance of the model.
-* Data Preprocessing: In the data preprocessing stage, the types are one-hot encoded, which is a common practice for multi-class classification problems. It is also standard practice to split the dataset into 90:10 train and test sets to evaluate the performance of the model.
-* Performance Metrics: This experiment evaluates the performance of the model using mean squared error (MSE) and accuracy. These two metrics provide important information about the performance of the model on the training and test data. MSE is used to measure the prediction error of continuous output, while accuracy (Accuracy) is used to evaluate the performance of classification models. The use of these two metrics is appropriate because they provide different aspects of performance information.
-* Classification Report: Generating a classification report is mentioned, which is a good practice. Classification reports usually include indicators such as precision, recall, F1 score, etc., which are very helpful for understanding the performance of the model on each category. This can help determine if the model is performing better or worse on certain categories.
-* Tuning and Improvement: While some descriptions of the model are provided, no hyperparameter tuning or other steps for further improvement are mentioned in the lab report. In practical applications, multiple trials and adjustments are usually required to optimize model performance.
-* For the four cross-validation folds (Folds), the MSE of each fold is very close, all around 0.018.
-The average MSE value is 0.018, which means that the average prediction error of the model is relatively small. MSE measures the difference between the predicted value of the model and the actual value, and a smaller MSE indicates a better predictive performance of the model.
-* R2 Score Analysis:
-For the four cross-validation folds, the R2 scores for each fold range from 0.413 to 0.416.
-The average R2 score is 0.414, which is a relatively stable value. The R2 score measures how well the model fits the observed data, and the closer to 1, the better the fit.
-* Overall average MSE and R2:
-The overall mean MSE was 0.018 and the overall mean R2 was 0.414. This shows that the performance of the model on the entire data set is also stable, and the fitting effect on the data is better.
-* Collapse of best MSE and R2 scores:
-First-fold cross-validation achieves the best performance in terms of MSE and R2. This means that at this compromise, the model has the smallest prediction error and the best fit to the data.
-* Overall, this project appears to be a reasonable modeling of a classification problem, using an appropriate neural network architecture and performance evaluation metrics. However, more detailed information, such as the choice of hyperparameters and the results of the training process, as well as a broader model performance report, would provide a more complete understanding of the quality of experiments and model performance
+## Model 1: Binary Classification - Linear vs. Circular Collider types
+
+The testing accuracy was .96. For k-folds, there was a mean accuracy of .95 with a sd of .019
 
 ### Fitting of the data
-Our data does not appear to be overfit. For more information about this and to see the required fitting graph, please see our colab file
+The training accuracy was .98 and the testing accuracy was only very slightly lower. Also, we determined the best model based on the validation scores to prevent overfitting. Based on that, I would say overfitting was minimal
 
 ## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
-In our project, we tested the hypothesis of classifying the collision type based on the model by using SVMs. We are using a kernel function named Radial Basis Function, abbreviated with RBF. The reason why we are not using linear function as a kernel is because the dataset could be further classified as the dataset is non-linear. Choosing a non-linear model to predict a non-linear dataset will better enhance the accuracy of the model. Below is a complete steps for building our model:
-* Data Preprocessing: In the data preprocessing stage, from the original dataset, we converted one hot encoding to label encoding, originally, there are two target variables, one called `circular` and one called `linear`. However, because SVM does not support a two columns dataset, so we converted the data back to one column, we used 1 for linear and 0 for circular, so here we are using Label Encoding that we have learned in class.
-* Performance Metrics: Since SVM model is not a linear regression model, we cannot use MSE or R^2 to evaluate the metrics. Instead, we are using a Confusion matrix to calculate the accuracy of the model. We observed that the accuracy for yTest data is 0.69 and the accuracy for yTrain data is 0.94. A little bit note here, is that we are using 4 features `position`, `stopping power`, `dEdx_KaonPlus_Isolated;1` and `dEdx_PionPlus_Isolated;1` as independent variables, to predict if the particle is `circular` or `linear`.
-* Classification Report: After running the model, we are using classification reports to get the result in terms of precision and recall. We get 0.65 of precision and 0.84 for recall of our yTest Data. Moreover, we get 0.90 and 0.93 for precision and recall respectively for yTrain Data. As we know that, the higher the precision and recall, the better the model, they provide lots of detail for us to understand how the model’s performance in terms of predicting the target variable
+The accuracy for test .62. The accuracy for train was .59. We do not think a svm model is able to represent this data as well as neural nets 
 
 
 
 ## Model 3: Regression - Predicting the Count of Each Decayed Particle
-In our project, it makes perfect sense to use a 5-layer ANN to handle complex data. The linear activation function is one of the simplest activation functions. It only performs a linear combination of inputs and weights, so the calculation is very fast, speeding up the overall model. The Leaky ReLU activation function solves the "neuron death" problem by having a small slope on negative inputs (usually a small constant, such as 0.01) so that the gradient does not disappear completely in these regions, thus aiding gradient propagation and training Deeper neural networks. Its output is not strictly zero in the negative region, which helps the network learn and converge, and this activation function can fit the data better in some cases because it has non-zero values over a wider range of input gradients.
-To sum up, choosing the appropriate activation function and number of network layers can improve the performance of the model.
+The testing MSE was 0.006 and the training MSE was 0.004. When we ran K-folds validation on it to test its consistancy, we got a mean loss of 0.01 with a standard deviation of 0.0006
+### Fitting of the data 
+Based on the similar testing and training MSEs and the very low variation between K-Folds loss, it is unlikely that our model is significantly overfitting the data
 
-* Data Preprocessing: It is common standard practice to split the data set into 90:10 training and test sets to evaluate the performance of the model.
-* Performance metrics: This experiment uses mean squared error (MSE) and accuracy to evaluate the model's performance. These two metrics provide important information about the model's performance on training and test data. MSE is used to measure the prediction error of continuous output, while accuracy is used to evaluate the performance of the classification model. It is appropriate to use these two metrics because they provide information on different aspects of performance.
-* Classification Reports: Generating classification reports was mentioned, which is a good practice. Classification reports usually include metrics such as precision, recall, F1 score, etc. These metrics are very helpful in understanding the performance of the model in each category. This can help determine whether the model performs better or worse in certain categories.
-* Heat map: more intuitively shows the correlation and non-correlation between data.
-* Tuning and improvements: While some description of the model is provided, there is no mention of hyperparameter tuning or other steps for further improvement in the lab report. In practical applications, multiple attempts and adjustments are usually required to optimize model performance.
-
-For the four cross-validation folds (Folds), the MSE for each fold is essentially the same, around 0.018. The average MSE value is 0.018, which means that the average prediction error of the model is relatively small. MSE measures the difference between the model's predicted value and the actual value. The smaller the MSE, the better the model's prediction performance.
-* R2 score analysis: For the four cross-validation folds, the R2 scores for each fold ranged from 0.413 to 0.416. The average R2 score is 0.414, which is a relatively stable value. The R2 score measures how well the model fits the observed data; the closer it is to 1, the better the fit.
-* Overall mean MSE and R2: The overall mean MSE is 0.018 and the overall mean R2 is 0.414. This shows that the performance of the model is stable on the entire data set and the fitting effect of the data is better.
-* Collapse of the best MSE and R2 scores: The first cross-validation achieves the best performance in terms of MSE and R2. This means that under this trade-off, the model has the smallest prediction error and best fits the data.
-Overall, the project appears to be a reasonable modeling of the classification problem using appropriate neural network architectures and performance evaluation metrics. However, more detailed information, such as the selection of hyperparameters and the results of the training process, as well as more extensive reporting of model performance, would provide a more complete understanding of the experimental quality and model performance
-* Data fitting: Please consult our collab file
 
 ## Model 4: 
+Visially, the sample generated seems to match the dataset fairly well
+
+When preforming statistical tests to determine whether of not the 2 datapoints were likely to come from the same population distribution, we found that 2 of the columns were not able to reject the HO that the 2 datapoints came from the same population, however, the count column had a p-value low enough to reject the null hypothesis
+based on our small sample size of just 500 though comparied to the dataset which contains >100,000 rows, we think the fact that it visiually matches the data and got a high p-value for 2 of 3 columns is pretty good
+When preforming DBSCAN clustering with the generated samples and original data, both the samples and the data were put into the same cluster and there were no anomalies detected, which means the data we generated ewas similar enough to not be classified as an outlier
+
+
+
 
 # Discussion
 ## Data Exploration
@@ -178,11 +159,7 @@ The goal in our Data Exploration phase was 3-fold:
 1. figure out what features were common in both files
 1. discover meaning in the data and their respective graphs
 
-After extracting data from the `.root` files and making pandas dataframes out of them is how we were able to figure
-out that our dataframe had only 2 rows (one for circular and the other for spherical collisions) each of which
-contained 1000x1000 matrices representing data from over 91,000 collisions.
-
-Through careful analysis of the graphs these matrices made, in addition to previous knowledge and experience one of our group members had with similar datasets, we were able to deduce what the rows, columns, and values of the matrices represented:
+After figuring out how to extract meaningful data from our root files and the interpretation of this data, we ended up with 16 10,000 by 10,000 matrices such that:
 
 1. rows correspond to position
 1. columns correspond to change in energy over distance (equates to Stopping power)
@@ -206,7 +183,7 @@ From our Data Exploration milestone, we were able to extract 13 1000x1000 matric
 After careful consideration, we believed it to be more beneficial for us to convert these matrices into tabular
 data form as it is something we are all more familiar and comfortable working with. 
 
-Before creating the 3 normalized `norm_train`, `norm_val`, and `norm_test` `.csv` files, we first one-hot encoded
+Before creating the `holygrail.csv` files, we first one-hot encoded
 our `linear` and `circular` features. After doing so, we  then actually began the process of creating the dataframe
 columns (i.e. converting the matrices), which consisted of the positions, stopping power, the detection number for
 different particle types, and the one hot encoded columns representing circular and linear collider types. This
@@ -237,7 +214,7 @@ try to make sure that we are extracting the data at the exact same places in the
 that the places we are extracting data would contain the least amount of useless data (all zeros would be
 considered useless). 
 
-In retrospect, it would have been easier to do this based on looking at areas across all graphs where nost data
+In retrospect, it would have been easier to do this based on looking at areas across all graphs where most data
 seemed to be concentrated. However, the approach we choose involved interating through matrices to find the maximum
 and minimum row and column where there is meaningful data, using those values to find the global minimum and
 maximum, evaluating at those points and creating a dataframe for each feature, recursively merging all dataframes
@@ -250,12 +227,13 @@ model](#model-1-binary-classification---linear-vs-circular-collisions), we creat
 in our dataframe (excluding `circular` and `spherical` labels), we used this model to predict whether the
 datapoints were consistent with that of a linear collision or a spherical collision. 
 
+
 ### Challenges and Shortcomings
-As our results show, after only running for a single epoch our model already displayed a high accuracy rate of 91%.
-Since we couldn't believe our model was performing so well from the jump, we performed tests to pinpoint whether
+In the first draft of the model, we were originally getting very high testing accuracy after just one epoch. We were very suspicious and spent a long time trying to figure out if our model was amazing, or incredibly bias. We decided to normalize the training, testing, and validation sets seprately in order to prevent any leakage of distributions. 
+Another big thing we noticed is that the preprocessed data contained a lot more instances of circular collider types than linear. This would have caused  In order to combat this, we included a sampler in our normalizer function to ensure that all testing, training, and 
 our model had any defects, or if the way we performed our preprocessing was faulty. To do this, we ran p-value
 tests to see how statistically significant the difference is between the column values for linear and circular
-collisions.
+collisions. We a
 
 Our p-value tests showed that there were several features with a p-value of zero (or close to zero) meaning there
 are strong statistical differences between our data. This is consistent with the experiments performed to retrieve
