@@ -138,9 +138,9 @@ Training and Testing graph
 
 <img src="/PictureFolder/model1_training&testing.png" alt= "Training and Testing graph" width="450" />
 
-Average Accuracy
+K-fold Average Accuracy
 
-<img src="/PictureFolder/model1_AverageAccuracy.png" alt= "Average Accuracy" width="450" />
+<img src="/PictureFolder/model1_AverageAccuracy.png" alt= "K-fold Average Accuracy" width="450" />
 
 K-fold Accuracy Scores
 
