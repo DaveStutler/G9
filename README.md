@@ -77,9 +77,9 @@ In hopes of predicting the type of collider, either circular or linear, we use a
 
 ## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
 ### Description
-To further classifying the Linear vs Circular Collisions, we attempt at using a SVM model to illustrate the boundary between the 2 particle collider. To do this, we isolate 2 features with the highest correlation between them and illustrate an contour graph. 
-* **Architecture**: In our svm model, we take features `dEdx_DeuteronPlus_Isolated;1` and `dEdx_AlphaPlus_Isolated;1` because they have cor = 0.75, the highest correlation between any features, with Radial Basis Function Kernel (RBF) function to as our kernel.
-* We check the accurary_score for performance, as well as illustrating the classification report on our result.
+To further classifying the Linear vs Circular Collisions, we attempt at using a SVM model to illustrate the boundary between the 2 particles collide with each other. We hypothesize that the position and the stopping power greatly influence the classification problem. Therefore, classification model without the 2 important features would have low accuracy score. To test this hypothesis, we pick 2 features that has the highest correlation with the target variables: `dEdx_KaonPlus_Isolated;1` and `dEdx_PionPlus_Isolated;1`, with a correlation of 0.18, and 0.25 respectively. We also test the model with `position` and `stopping power` in order to confirm their hypothesis. These 2 variables are selected because they are highly correlated with target variables, about -0.57 and 0.059 shown on the heatmap.  
+* Architecture: In our svm model, we take features `dEdx_PionPlus_Isolated;1` and `dEdx_KaonPlus_Isolated;1`. With Radial Basis Function Kernel (RBF) function to as our kernel.
+* We check the accurary_score for performance, as well as illustrating classification report and the confusion matrix for model performance.
 
 ## Model 3: Regression - Predicting the Count of Each Decayed Particle
 ### Description
@@ -141,6 +141,10 @@ First-fold cross-validation achieves the best performance in terms of MSE and R2
 Our data does not appear to be overfit. For more information about this and to see the required fitting graph, please see our colab file
 
 ## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
+In our project, we tested the hypothesis of classifying the collision type based on the model by using SVMs. We are using a kernel function named Radial Basis Function, abbreviated with RBF. The reason why we are not using linear function as a kernel is because the dataset could be further classified as the dataset is non-linear. Choosing a non-linear model to predict a non-linear dataset will better enhance the accuracy of the model. Below is a complete steps for building our model:
+* Data Preprocessing: In the data preprocessing stage, from the original dataset, we converted one hot encoding to label encoding, originally, there are two target variables, one called `circular` and one called `linear`. However, because SVM does not support a two columns dataset, so we converted the data back to one column, we used 1 for linear and 0 for circular, so here we are using Label Encoding that we have learned in class.
+* Performance Metrics: Since SVM model is not a linear regression model, we cannot use MSE or R^2 to evaluate the metrics. Instead, we are using a Confusion matrix to calculate the accuracy of the model. We observed that the accuracy for yTest data is 0.64 and the accuracy for yTrain data is 0.75.
+* Classification Report: After running the model, we are using classification reports to get the result in terms of precision and recall. We get 0.65 of precision and 0.64 for recall. The higher the precision and recall, the better the model, they provide lots of detail for us to understand how the model’s performance in terms of predicting the target variable
 
 ## Model 3: Regression - Predicting the Count of Each Decayed Particle
 In our project, it makes perfect sense to use a 5-layer ANN to handle complex data. The linear activation function is one of the simplest activation functions. It only performs a linear combination of inputs and weights, so the calculation is very fast, speeding up the overall model. The Leaky ReLU activation function solves the "neuron death" problem by having a small slope on negative inputs (usually a small constant, such as 0.01) so that the gradient does not disappear completely in these regions, thus aiding gradient propagation and training Deeper neural networks. Its output is not strictly zero in the negative region, which helps the network learn and converge, and this activation function can fit the data better in some cases because it has non-zero values over a wider range of input gradients.
@@ -258,6 +262,8 @@ model was able to hone in on these trends and them to make accurate predictions,
 
 ## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
 
+### Evaluation
+(write here)
 
 ## Model 3: Regression - Predicting the Count of Each Decayed Particle
 The way our dataframe reads is that at a specific stopping power and position (under either a circular or linear
