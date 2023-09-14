@@ -193,7 +193,7 @@ P-values
 DB scan clustering 
 
 <img src="/PictureFolder/model4_4thGraph.png" alt= "fill in" width="450" />
-
+Results summary: Overall, our two neural nets preformed the best with very impressive accuracy and loss scores. Our SVM model got very poor scores. We think that our data is too complex for this type of model. The generator was hard to assess in terms of accuracy, however based on how it looks in comparison to the sampled data, it seems to be generating reasonable samples 
 
 # Discussion
 ## Data Exploration
