@@ -261,8 +261,6 @@ classification problem was simply easy. Since our data is significantly differen
 model was able to hone in on these trends and them to make accurate predictions, even after only a few epochs. 
 
 ## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
-
-### Evaluation
 (write here)
 
 ## Model 3: Regression - Predicting the Count of Each Decayed Particle
