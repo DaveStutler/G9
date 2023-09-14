@@ -291,11 +291,11 @@ we remain confident that our models and the training, validation, and testing se
 (write here)
 
 # Collaboration
-* Darian Lee:  
+* Darian Lee: collaborated with Kayla in implementing the K-fold classification; extract the data from the root files; preprocessed the data; built model 1, 3, and 4. 
 * Huy Nguyen: collaborated with Kahee in implementing the SVM model classification(model 2); detail description and result for model 2.
-* Vincent Serracino: 
+* Vincent Serracino: Introduced the particle collider dataset, knowledgeable about particle collider, our team result's interpreter in term of high level physics
 * Kayla M. Araiza: collaborated with Darian in implementing K-Fold classfication, restructor the README file, responsible for final report.
-* Mujun Zhang: 
+* Mujun Zhang: organize and editing README file for Preprocessing & First Model Building milestone.
 * Kahee Chan: collaborated with Huy in implementing the SVM model classification(model 2); detail description, discussion, and result for model 2; responsible for visual report on the model
 
 File description of data:
