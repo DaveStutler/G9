@@ -15,7 +15,7 @@ For unsupervised learning, we will experiment with generators where our goal wil
 matches our real data distribution and is indistinguishable from our real data.
 
 # Introduction
-
+(write here)
 
 # Methods
 ## Data Exploration Results
@@ -281,10 +281,10 @@ we remain confident that our models and the training, validation, and testing se
 
 
 # Conclusion
-
+(write here)
 
 # Collaboration
-
+(write here)
 
 
 File description of data:
