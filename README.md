@@ -49,16 +49,18 @@ Plot of counts collected for ProtonMinus at various stopping powers and position
 
 ## Data Preprocessing (steps)
 1. Analyze original linear and circular `.root` files to determine which features coincide in both files
-1. Convert 13 1000x1000 matrices into tabular data form
+2. Convert 13 1000x1000 matrices into tabular data form
     1. One-hot encode our `linear` and `circular` features
-    1. Create single dataframe columns for each of the 13 1000x1000 matrices 
-    1. Concatenate single columns into 1 tabular dataframe
-        1. columns consist of position, stopping power, and then all other different features
-1. Generate normalized `.csv` files 
-    1. Normalize `circular` and `linear` elements separately
+    2. Iterate through each matrix in order to find all indexes where at least one feature has data
+    3. Create dataframes for each matrix consisting of 'position' 'stopping power' and the count of that feature such that all dataframes contain the same values for 'position' and 'stopping power'
+    4. Concatenate all individial feature dataframes together based on 'position' and 'stopping power' index. We call this master dataframe 'holygrail'
+    5. Down 'holygrail' as a csv
+3. Normalizing and splitting 
     1. Split `train`, `validation` and `test` sets with a split ratio of 70:10:20, respectively
-    1. Normalize `train`, `validation` and `test` sets separately
-    1. Create `.csv` files for each. 
+    2. Normalize `train`, `validation` and `test` sets separately
+    3. Within the normalizer function: normalize `circular` and `linear` elements separately and ensure and equal number of each is in each training, testing, and val set\
+    4. Within the normalizer function: Threshold very small values and delete rows with no significant data
+
 
 ## Model 1: Binary Classification - Linear vs. Circular Collisions
 ### Description
