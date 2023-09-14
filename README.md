@@ -163,7 +163,7 @@ In our project, we tested the hypothesis of classifying the collision type based
 * Performance Metrics: Since SVM model is not a linear regression model, we cannot use MSE or R^2 to evaluate the metrics. Instead, we are using a Confusion matrix to calculate the accuracy of the model. We observed that the accuracy for yTest data is 0.69 and the accuracy for yTrain data is 0.94. A little bit note here, is that we are using 4 features `position`, `stopping power`, `dEdx_KaonPlus_Isolated;1` and `dEdx_PionPlus_Isolated;1` as independent variables, to predict if the particle is `circular` or `linear`.
 * Classification Report: After running the model, we are using classification reports to get the result in terms of precision and recall. We get 0.65 of precision and 0.84 for recall of our yTest Data. Moreover, we get 0.90 and 0.93 for precision and recall respectively for yTrain Data. As we know that, the higher the precision and recall, the better the model, they provide lots of detail for us to understand how the model’s performance in terms of predicting the target variable
 
-## Model 3: Regression - Predicting the Count of Each Decayed Particle
+## Model 3 Regression - Predicting the counts of particles based on the position and stopping power at which they were detected as well as the collider type
 The way the data frame is formatted is by saying the count of each particle that collided at that stopping power and position. Our team hopes to use it to predict the amount of each particle detected at a specific stopping power and location.
 
 In the project code in colab, our group built a feedforward neural network with multiple hidden layers for regression tasks to minimize the mean square error loss function. The LeakyReLU activation function introduces nonlinearity, allowing the model to learn more complex relationships. During the training process, the Adam optimizer was used, mean square error (MSE) was monitored as a performance metric, and early stopping and model checkpointing were used to monitor and save the model's performance.
@@ -286,7 +286,7 @@ model was able to hone in on these trends and them to make accurate predictions,
 ## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
 (write here)
 
-## Model 3: Regression - Predicting the Count of Each Decayed Particle
+## Model 3: Model 3 Regression - Predicting the counts of particles based on the position and stopping power at which they were detected as well as the collider type
 The way our dataframe reads is that at a specific stopping power and position (under either a circular or linear
 collision), it gives the number of all decayed particles detected. As such, since our classification problem appears to be simple, with our second model we wanted to explore answering the question of how we could predict the number of decayed particles in different scenarios depending on stopping power, position, and collision type (linear or circular). 
 
