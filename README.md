@@ -77,9 +77,12 @@ In hopes of predicting the type of collider, either circular or linear, we use a
 
 ## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
 ### Description
-To further classifying the Linear vs Circular Collisions, we attempt at using a SVM model to illustrate the boundary between the 2 particles collide with each other. We hypothesize that the position and the stopping power greatly influence the classification problem. Therefore, classification model without the 2 important features would have low accuracy score. To test this hypothesis, we pick 2 features that has the highest correlation with the target variables: `dEdx_KaonPlus_Isolated;1` and `dEdx_PionPlus_Isolated;1`, with a correlation of 0.18, and 0.25 respectively. We also test the model with `position` and `stopping power` in order to confirm their hypothesis. These 2 variables are selected because they are highly correlated with target variables, about -0.57 and 0.059 shown on the heatmap.  
-* Architecture: In our svm model, we take features `dEdx_PionPlus_Isolated;1` and `dEdx_KaonPlus_Isolated;1`. With Radial Basis Function Kernel (RBF) function to as our kernel.
+To further classifying the Linear vs Circular Collisions, we attempt at using a SVM model to illustrate the boundary between 4 features. We hypothesize that the `position` and the `stopping power` greatly influence the classification problem. To test this hypothesis, we also pick 2 features that has the highest correlation with the target variables: `dEdx_KaonPlus_Isolated;1`, `dEdx_PionPlus_Isolated;1`, `position`, and `stopping power`.   These variables has the correlation of 0.18, 0.25, 0.57, and 0.059 respectively.  
+* Architecture: In our svm model, we take features `dEdx_PionPlus_Isolated;1`, `dEdx_KaonPlus_Isolated;1`. With Radial Basis Function Kernel (RBF) function to as our kernel.
+* Our dataset were splited into training and testing 80:20. 
+* The validation, training, testing data were all normalized.
 * We check the accurary_score for performance, as well as illustrating classification report and the confusion matrix for model performance.
+* We tested our model on both the training data and testing data, reporting classification report and confusion matrix for both data.
 
 ## Model 3: Regression - Predicting the Count of Each Decayed Particle
 ### Description
