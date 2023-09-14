@@ -212,7 +212,7 @@ try to make sure that we are extracting the data at the exact same places in the
 that the places we are extracting data would contain the least amount of useless data (all zeros would be
 considered useless). 
 
-In retrospect, it would have been easier to do this based on looking at areas across all graphs where nost data
+In retrospect, it would have been easier to do this based on looking at areas across all graphs where most data
 seemed to be concentrated. However, the approach we choose involved interating through matrices to find the maximum
 and minimum row and column where there is meaningful data, using those values to find the global minimum and
 maximum, evaluating at those points and creating a dataframe for each feature, recursively merging all dataframes
@@ -225,12 +225,13 @@ model](#model-1-binary-classification---linear-vs-circular-collisions), we creat
 in our dataframe (excluding `circular` and `spherical` labels), we used this model to predict whether the
 datapoints were consistent with that of a linear collision or a spherical collision. 
 
+
 ### Challenges and Shortcomings
-As our results show, after only running for a single epoch our model already displayed a high accuracy rate of 91%.
-Since we couldn't believe our model was performing so well from the jump, we performed tests to pinpoint whether
+In the first draft of the model, we were originally getting very high testing accuracy after just one epoch. We were very suspicious and spent a long time trying to figure out if our model was amazing, or incredibly bias. We decided to normalize the training, testing, and validation sets seprately in order to prevent any leakage of distributions. 
+Another big thing we noticed is that the preprocessed data contained a lot more instances of circular collider types than linear. This would have caused  In order to combat this, we included a sampler in our normalizer function to ensure that all testing, training, and 
 our model had any defects, or if the way we performed our preprocessing was faulty. To do this, we ran p-value
 tests to see how statistically significant the difference is between the column values for linear and circular
-collisions.
+collisions. We a
 
 Our p-value tests showed that there were several features with a p-value of zero (or close to zero) meaning there
 are strong statistical differences between our data. This is consistent with the experiments performed to retrieve
