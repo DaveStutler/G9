@@ -177,19 +177,20 @@ When preforming statistical tests to determine whether of not the 2 datapoints w
 based on our small sample size of just 500 though comparied to the dataset which contains >100,000 rows, we think the fact that it visiually matches the data and got a high p-value for 2 of 3 columns is pretty good
 When preforming DBSCAN clustering with the generated samples and original data, both the samples and the data were put into the same cluster and there were no anomalies detected, which means the data we generated ewas similar enough to not be classified as an outlier
 
-fill in
 
-<img src="/PictureFolder/model4_firstGraph.png" alt= "fill in" width="450" />
+Generated Data (Blue) with Sample Data (Red)
 
-fill in
+<img src="/PictureFolder/model4_2ndGraph.png" alt= "Generated Data (Blue) with Sample Data (Red)" width="450" />
 
-<img src="/PictureFolder/model4_2ndGraph.png" alt= "fill in" width="450" />
+Generated Data (Blue) with Sample Data (Red) tranformed with np.log
 
-fill in
+<img src="/PictureFolder/model4_3rdgraph.png" alt= "Generated Data (Blue) with Sample Data (Red) tranformed with np.log" width="450" />
 
-<img src="/PictureFolder/model4_3rdgraph.png" alt= "fill in" width="450" />
+P-values
 
-fill in
+<img src="/PictureFolder/Model4_pvalues.png" alt="p-values" width="450" />
+
+DB scan clustering 
 
 <img src="/PictureFolder/model4_4thGraph.png" alt= "fill in" width="450" />
 
