@@ -95,12 +95,12 @@ Predicting the Count of Each Decayed Particle
 * The loss function is set up. The loss function is used to measure the difference between the model's predicted value and the real label. It measures the average square error between the model's predicted value and the actual value. The goal of the optimization model is to minimize the MSE and make the prediction as close to the true value as possible.
 * Optimizer='adam': The optimizer is used to update the weights in the neural network to minimize the loss function. 'adam' is a commonly used optimization algorithm, it is a gradient descent based method that usually performs well in deep learning.
 
-metrics=['MSE']: Here set the evaluation metrics (metrics), which are used to evaluate the performance of the model during and after training. Here, the performance of the model will be evaluated using mean square error (MSE). This means that after each training cycle, the model's MSE will be calculated and recorded so that you can track the model's training progress.
-metrics=['MSE']: Here set the evaluation metrics (metrics), which are used to evaluate the performance of the model during and after training. Here, the performance of the model will be evaluated using mean square error (MSE). This means that after each training cycle, the model's MSE will be calculated and recorded so that you can track the model's training progress.
+* metrics=['MSE']: Here set the evaluation metrics (metrics), which are used to evaluate the performance of the model during and after training. Here, the performance of the model will be evaluated using mean square error (MSE). This means that after each training cycle, the model's MSE will be calculated and recorded so that you can track the model's training progress.
+* metrics=['MSE']: Here set the evaluation metrics (metrics), which are used to evaluate the performance of the model during and after training. Here, the performance of the model will be evaluated using mean square error (MSE). This means that after each training cycle, the model's MSE will be calculated and recorded so that you can track the model's training progress.
 * We also incorporated validation data into our training in order to find the best models for ModelCheckpoint.
 The validation, training, and testing data were all normalized seprately and there was no possibility of data leakage
-* We tested our model on unseen values and reported the MSE as well as the epoch at which we found our best model based on ModelCheckpoint and EarlyStopping、、
-、
+* We tested our model on unseen values and reported the MSE as well as the epoch at which we found our best model based on ModelCheckpoint and EarlyStopping.
+  
 K-folds
 In order to test the models consistancy accross unseen data, we tested it on 4 folds in which a random section of the training data was sectioned off as validation data and normalized seperately.
 The goal was to try to get a high mean and low sd to indicate that our model has low variation and is consistantly accurate at predicting unseen data
