@@ -130,16 +130,32 @@ The testing accuracy was .96. For k-folds, there was a mean accuracy of .95 with
 ### Fitting of the data
 The training accuracy was .98 and the testing accuracy was only very slightly lower. Also, we determined the best model based on the validation scores to prevent overfitting. Based on that, I would say overfitting was minimal
 
+Confusion Matrix
+
 <img src="/PictureFolder/confusionMatrix_model1.png" alt= "Confusion Matrix" width="450" />
+
+Training and Testing graph
+
 <img src="/PictureFolder/model1_training&testing.png" alt= "Training and Testing graph" width="450" />
+
+Average Accuracy
+
 <img src="/PictureFolder/model1_AverageAccuracy.png" alt= "Average Accuracy" width="450" />
+
+K-fold Accuracy Scores
+
 <img src="/PictureFolder/model1_score.png" alt= "K-fold Accuracy Scores" width="450" />
 
 
 ## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
 The accuracy for test .62. The accuracy for train was .59. We do not think a svm model is able to represent this data as well as neural nets 
 
+Confusion Matrix for XTest
+
 <img src="/PictureFolder/confusionMatrix_Model2_XTest.png" alt= "Confusion Matrix for XTest" width="450" />
+
+Confusion Matrix for XTest
+
 <img src="/PictureFolder/confusionMatrix_Model2_XTrain.png" alt= "Confusion Matrix for XTest" width="450" />
 
 
@@ -148,7 +164,12 @@ The testing MSE was 0.006 and the training MSE was 0.004. When we ran K-folds va
 ### Fitting of the data 
 Based on the similar testing and training MSEs and the very low variation between K-Folds loss, it is unlikely that our model is significantly overfitting the data
 
+K-Fold classification result
+
 <img src="/PictureFolder/model3_kfoldResult.png" alt= "K-Fold classification result" width="450" />
+
+Mean Square Error
+
 <img src="/PictureFolder/model3_MSE.png" alt= "Mean Square Error" width="450" />
 
 ## Model 4: 
@@ -158,10 +179,20 @@ When preforming statistical tests to determine whether of not the 2 datapoints w
 based on our small sample size of just 500 though comparied to the dataset which contains >100,000 rows, we think the fact that it visiually matches the data and got a high p-value for 2 of 3 columns is pretty good
 When preforming DBSCAN clustering with the generated samples and original data, both the samples and the data were put into the same cluster and there were no anomalies detected, which means the data we generated ewas similar enough to not be classified as an outlier
 
+fill in
 
 <img src="/PictureFolder/model4_firstGraph.png" alt= "fill in" width="450" />
+
+fill in
+
 <img src="/PictureFolder/model4_2ndGraph.png" alt= "fill in" width="450" />
+
+fill in
+
 <img src="/PictureFolder/model4_3rdgraph.png" alt= "fill in" width="450" />
+
+fill in
+
 <img src="/PictureFolder/model4_4thGraph.png" alt= "fill in" width="450" />
 
 
