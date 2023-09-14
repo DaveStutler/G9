@@ -2,8 +2,9 @@
 
 # Analysis on the Particle Collider Dataset
 
-# Abstract
-We have two datasets, `Output_File_2023_02_15.root` which includes data about the linear collisions and `yieldHistos_7p7GeV_Pion_2022_08_31.root` which contains data about circular. The project idea is to analyze the datasets on the shape of explosions from a particle collider in order to determine what aspects of the particles used and conditions are common between collider and detector types. These findings would be significant because they can help researchers determine the collider type they should use when looking to collide heavy ion particles.
+
+# Introduction
+We have two datasets obtained from different particle colliders, `Output_File_2023_02_15.root` which includes data about the linear collisions and `yieldHistos_7p7GeV_Pion_2022_08_31.root` which contains data about circular. The project idea is to analyze the datasets on the shape of explosions from a particle collider in order to determine what aspects of the particles used and conditions are common between collider and detector types. These findings would be significant because they can help researchers determine the collider type they should use when looking to collide heavy ion particles.
 
 Two problems we intend to solve using supervised learning techniques include:
 1. classifying linear and spherical collisions 
@@ -11,11 +12,8 @@ Two problems we intend to solve using supervised learning techniques include:
 1. predicting count of decayed particles based on 3 features (stopping power, position, and collision type)
     1. using a regression model
 
-For unsupervised learning, we will experiment with generators where our goal will be to generate fake data that
-matches our real data distribution and is indistinguishable from our real data.
-
-# Introduction
-(write here)
+For unsupervised learning, we will experiment with generators where our goal will be to generate synthetic data that
+matches our real data distribution and is indistinguishable from our real data. The application for this would be to provide more data samples for physicists who do not have access to expensive real-world particle collider data to learn from and analyze.
 
 # Methods
 ## Data Exploration Results
@@ -271,8 +269,9 @@ I really wanted to practice unsupervized learning methods and I thought a data g
 ### Challenges and Shortcomings
 I initially spent a long time trying to figure out cool trends in the data using DBSCAN clustering. My original goal was to classify each of the particles into broader groups based on identified clusters. After spending days preprocessing the data for this task and futzing with parameters, I concluded that there are no interesting trends or clusters to be observed.
 That being said, I wish I would have spent less time on that so that I could have spent more time on perfecting the generator. The generator was a lot of work because I came in with no background knowledge and had to figure out everything. Optimizing the parameters was very difficult and I still do not think my parameters are very good. It was very frustering to see how smooth the dataset distribution is, and yet the generated samples were not able to match it very closely no matter what I did. Another issue was that I really didn't know how to test it. I do not think the tests I was running are industry standard; they just made the most sense to me as a way to see how closely the sample matched the data
+
 # Conclusion
-(write here)
+Overall, we all learned a lot from this project and had a lot of fun working with this unique set of data. The main thing we wish we could have done differently is to explore more ways to enhanse our generator to generate more accurate synthetic data. We feel this would have a very attractive real world application because it would allow for scientists to have access to more particle collider data which is very expensive and hard to obtain. This is a direction we would like to go in the future when we continue this project on our own. Another thing we would have liked to do differently for this submission is to remove our svm model because its accuracy is very low and the model does not add anything to our project. However, we felt the need to include it because two of our group members worked hard on it and we wanted to make sure they would get credit for their contributions. In conclusion, we are very happy with what we were able to achieve with our binary classifier and regression neural net, however, if we had more time, we would like to improve our generator in model 4. 
 
 # Collaboration
 * Darian Lee: extracted the data from the root files; preprocessed and analysied all data; built models 1, 3, and 4, collaborated with Kayla in implementing the K-fold validation, helped write about models 1, 3, and 4 in final report
