@@ -146,6 +146,8 @@ The overall mean MSE was 0.018 and the overall mean R2 was 0.414. This shows tha
 * Collapse of best MSE and R2 scores:
 First-fold cross-validation achieves the best performance in terms of MSE and R2. This means that at this compromise, the model has the smallest prediction error and the best fit to the data.
 * Overall, this project appears to be a reasonable modeling of a classification problem, using an appropriate neural network architecture and performance evaluation metrics. However, more detailed information, such as the choice of hyperparameters and the results of the training process, as well as a broader model performance report, would provide a more complete understanding of the quality of experiments and model performance
+* 
+* Finally, the test results given include the mean square error (MSE) and accuracy of the model on the test set. These metrics are used to evaluate a model's performance on unseen data. In the test results, the test accuracy is about 0.98, indicating that the model performs very well on the test set. The mean square error (MSE) is approximately 0.014, indicating that the average error between the model's predicted values and the actual values is small. The best accuracy of the model on the validation set was 0.954, and the model performed best when training was stopped.
 
 ### Fitting of the data
 Our data does not appear to be overfit. For more information about this and to see the required fitting graph, please see our colab file
