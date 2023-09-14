@@ -264,7 +264,15 @@ classification problem was simply easy. Since our data is significantly differen
 model was able to hone in on these trends and them to make accurate predictions, even after only a few epochs. 
 
 ## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
-(write here)
+The purpose of the data is to predict if the particle collisions is either circular or linear. In our model 2, we are using SVM to classify if they are any of these two. We begin using Label Encoding to manipulate the dataframe and make it suitable for passing it as SVMs. SVM Model is one of the best model for predicting binary classification, and the target variables allow it to be modeled as a Binary Classification, choosing this model we enhancing our understanding in binary classification problem, and provide a different perspective on how predicting works in SVM.
+
+# Details about the SVMs
+In the SVM model, we are using a kernel called RBF, it is a non-linear function that use 4 independent variables, `position`, `stopping power`, `dEdx_KaonPlus_Isolated;1` and `dEdx_PionPlus_Isolated;1`, and it helps a prediction of `circular` and `linear` collision.
+
+# Challenges about SVMs
+It is pretty hard to make it accurate, for instance, originally, we are only using `dEdx_KaonPlus_Isolated;1` and `dEdx_PionPlus_Isolated;1` to predict the model, the result is not as what we want based on a lower accuracy, precision and recall. With our strong effort on brainstorming which variables are highly correlated, we realized that `position` and `stopping power` provides a better result of accuracy, recall, and precision. In addition, the model of SVM provides a good understanding of time complexity for all of us. On average, we take 10-15 minutes to run 68k of row of data just to predit the SVM model and the time complexity of the SVM model is around O(n^2) to O(n^3), in which we understand that it will take a significantly longer time to predict a model for SVM. It provides a great understanding for all of us to know the important of time complexity and how it would effect the efficiency in machine learning field.
+
+By repetitively running and debugging the SVM Model and keep improving it, we get a better and better result in performance metrics over and over time. We have learned a lot from building this model although it takes the most of our time to run compared to other model. 
 
 ## Model 3: Regression - Predicting the Count of Each Decayed Particle
 The way our dataframe reads is that at a specific stopping power and position (under either a circular or linear
