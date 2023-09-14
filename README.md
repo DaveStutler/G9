@@ -102,7 +102,7 @@ model weights and bias, we  use the MSE loss function.
 ### Description
 Running experiments in nuclear colliders is expensive, so in order to help scientist who want to generate synthetic data to model this procress, we tried to make a generator using an encoding and decoding VAE model.
 * Preprocessing: to decrease the complexity of our data, we decided to only look at one feature, namely 'dEdx_PionPlus_Isolated;1'.
-*     we created a new df that contained only position, stopping power, and this element at indexes where its counts were non zero and we normalized all columns 
+* we created a new df that contained only position, stopping power, and this element at indexes where its counts were non zero and we normalized all columns 
 * Architecture: Most of the architecture was built through hours of trial an error. The final model includes 6 encoder layers and 5 decoder layers with a latent space of 10 dimensions.
 * 'MSE' was used to measure loss.
 ### Testing 
