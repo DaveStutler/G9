@@ -291,20 +291,24 @@ we remain confident that our models and the training, validation, and testing se
 (write here)
 
 # Collaboration
-(write here)
-
+* Darian Lee:  
+* Huy Nguyen: collaborated with Kahee in implementing the SVM model classification(model 2); detail description and result for model 2.
+* Vincent Serracino: 
+* Kayla M. Araiza: collaborated with Darian in implementing K-Fold classfication, restructor the README file, responsible for final report.
+* Mujun Zhang: 
+* Kahee Chan: collaborated with Huy in implementing the SVM model classification(model 2); detail description, discussion, and result for model 2; responsible for visual report on the model
 
 File description of data:
 `Collider_circular.root`: titled `yieldHistos_7p7GeV_Pion_2022_08_31.root`
 `Collider_linear.root`: titled `Output_File_2023_02_15.root`
 
 ***Group Member emails*** 
-[Darian Lee](deee@ucdavis.edu)
-[Huy Nguyen](hxnguyen@ucdavis.edu)
-[Vincent Serracino](vpserracino@ucdavis.edu)
-[Kayla M. Araiza](kmaraiza@ucdavis.edu)
-[Mujun Zhang](mjuzhang@ucdavis.edu)
-[Kahee Chan](kahchan@ucdavis.edu)
+* [Darian Lee](deee@ucdavis.edu)
+* [Huy Nguyen](hxnguyen@ucdavis.edu)
+* [Vincent Serracino](vpserracino@ucdavis.edu)
+* [Kayla M. Araiza](kmaraiza@ucdavis.edu)
+* [Mujun Zhang](mjuzhang@ucdavis.edu)
+* [Kahee Chan](kahchan@ucdavis.edu)
 
 # Link To Google Colab Code 
 https://colab.research.google.com/drive/1ZcecHvvYBBgO4CEE2mIW6B_TaWX5CkqI?usp=sharing
