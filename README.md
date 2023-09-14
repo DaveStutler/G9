@@ -121,27 +121,14 @@ The results of our data preprocessing phase include:
 1. Extraction of 13 features shared from our circular and spherical `.root` files
 1. Conversion of 13 1000x1000 matrices into a singular tabular pandas dataframe
     1. columns consisting of position, stopping power, and other linear and circular features
-1. Three normalized `.csv` files: `norm_train.csv`, `norm_test.csv`, and `norm_val.csv`
+1. 'holygrail'.csv file which contains all relivant data points as a dataframe
 
-## Model 1: Binary Classification - Linear vs. Circular Collisions
-In our project, using a 10-layer ANN to process complex data is a reasonable choice. The Relu activation function can speed up training because it does not involve exponential operations, while the Sigmoid activation function is suitable for classification problems. It is also appropriate to use a sigmoid output layer for binary classification. Choosing an appropriate activation function and number of network layers can improve the performance of the model.
-* Data Preprocessing: In the data preprocessing stage, the types are one-hot encoded, which is a common practice for multi-class classification problems. It is also standard practice to split the dataset into 90:10 train and test sets to evaluate the performance of the model.
-* Performance Metrics: This experiment evaluates the performance of the model using mean squared error (MSE) and accuracy. These two metrics provide important information about the performance of the model on the training and test data. MSE is used to measure the prediction error of continuous output, while accuracy (Accuracy) is used to evaluate the performance of classification models. The use of these two metrics is appropriate because they provide different aspects of performance information.
-* Classification Report: Generating a classification report is mentioned, which is a good practice. Classification reports usually include indicators such as precision, recall, F1 score, etc., which are very helpful for understanding the performance of the model on each category. This can help determine if the model is performing better or worse on certain categories.
-* Tuning and Improvement: While some descriptions of the model are provided, no hyperparameter tuning or other steps for further improvement are mentioned in the lab report. In practical applications, multiple trials and adjustments are usually required to optimize model performance.
-* For the four cross-validation folds (Folds), the MSE of each fold is very close, all around 0.018.
-The average MSE value is 0.018, which means that the average prediction error of the model is relatively small. MSE measures the difference between the predicted value of the model and the actual value, and a smaller MSE indicates a better predictive performance of the model.
-* R2 Score Analysis:
-For the four cross-validation folds, the R2 scores for each fold range from 0.413 to 0.416.
-The average R2 score is 0.414, which is a relatively stable value. The R2 score measures how well the model fits the observed data, and the closer to 1, the better the fit.
-* Overall average MSE and R2:
-The overall mean MSE was 0.018 and the overall mean R2 was 0.414. This shows that the performance of the model on the entire data set is also stable, and the fitting effect on the data is better.
-* Collapse of best MSE and R2 scores:
-First-fold cross-validation achieves the best performance in terms of MSE and R2. This means that at this compromise, the model has the smallest prediction error and the best fit to the data.
-* Overall, this project appears to be a reasonable modeling of a classification problem, using an appropriate neural network architecture and performance evaluation metrics. However, more detailed information, such as the choice of hyperparameters and the results of the training process, as well as a broader model performance report, would provide a more complete understanding of the quality of experiments and model performance
+## Model 1: Binary Classification - Linear vs. Circular Collider types
+
+The testing accuracy was .96. For k-folds, there was a mean accuracy of .95 with a sd of .019
 
 ### Fitting of the data
-Our data does not appear to be overfit. For more information about this and to see the required fitting graph, please see our colab file
+The training accuracy was .98 and the testing accuracy was only very slightly lower. Also, we determined the best model based on the validation scores to prevent overfitting. Based on that, I would say overfitting was minimal
 
 ## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
 In our project, we tested the hypothesis of classifying the collision type based on the model by using SVMs. We are using a kernel function named Radial Basis Function, abbreviated with RBF. The reason why we are not using linear function as a kernel is because the dataset could be further classified as the dataset is non-linear. Choosing a non-linear model to predict a non-linear dataset will better enhance the accuracy of the model. Below is a complete steps for building our model:
