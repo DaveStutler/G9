@@ -85,18 +85,17 @@ To further classifying the Linear vs Circular Collisions, we attempt at using a 
 
 ## Model 3: Regression -Predicting the counts of particles based on the position and stopping power at which they were detected as well as the collider type
 Predicting the Count of Each Decayed Particle
-### Description
-To increase the complexity of our project, we decided to make an attempt at predicting the count of decayed
-particles detected at a certain stopping power and position under either a circular or linear collision. To do
-this, we use build a 5-layer linear regression ANN model. 
-* Architecture: In our 1st hidden layer we use a linear activation function than then feeds its outputs into the
-2nd hidden layer which uses a LeakyRelu activation functions (the 3rd and 4th hidden
-layers follow this same architecture). The output layer makes use of a linear activation function. To update our
-model weights and bias, we  use the MSE loss function.
+### DescriptionDescription
+* To increase the complexity of our project, we decided to make an attempt at predicting the count of decayed particles detected at a certain stopping power and position under either a circular or linear collision. To do this, we use build a 4-layer linear regression ANN model.
+* Architecture: In our 1st hidden layer we use a linear activation function than then feeds its outputs into the 2nd hidden layer which uses a LeakyRelu activation functions (the 3rd hidden layers follow this same architecture). The output layer makes use of a linear activation function. To update our model weights and bias, we use the MSE loss function.
 * Once again, we used EarlyStopping and ModelCheckpoint to ensure we were getting the best weights possible and not spending more time training than the model needed.
 * We also incorporated validation data into our training in order to find the best models for ModelCheckpoint.
-* The validation, training, and testing data were all normalized seprately and there was no possibility of data leakage
-* We tested our model on unseen values and reported the MSE as well as the epoch at which we found our best model based on ModelCheckpoint and EarlyStopping
+The validation, training, and testing data were all normalized seprately and there was no possibility of data leakage
+* We tested our model on unseen values and reported the MSE as well as the epoch at which we found our best model based on ModelCheckpoint and EarlyStopping、、
+、
+K-folds
+In order to test the models consistancy accross unseen data, we tested it on 4 folds in which a random section of the training data was sectioned off as validation data and normalized seperately.
+The goal was to try to get a high mean and low sd to indicate that our model has low variation and is consistantly accurate at predicting unseen data
 * ### K-folds
 * In order to test the models consistancy accross unseen data, we tested it on 5 folds in which a random section of the training data was sectioned off as validation data and normalized seperately.
 * The goal was to try to get a high mean and low sd to indicate that our model has low variation and is consistantly accurate at predicting unseen data
