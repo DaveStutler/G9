@@ -228,18 +228,10 @@ datapoints were consistent with that of a linear collision or a spherical collis
 
 ### Challenges and Shortcomings
 In the first draft of the model, we were originally getting very high testing accuracy after just one epoch. We were very suspicious and spent a long time trying to figure out if our model was amazing, or incredibly bias. We decided to normalize the training, testing, and validation sets seprately in order to prevent any leakage of distributions. 
-Another big thing we noticed is that the preprocessed data contained a lot more instances of circular collider types than linear. This would have caused  In order to combat this, we included a sampler in our normalizer function to ensure that all testing, training, and 
-our model had any defects, or if the way we performed our preprocessing was faulty. To do this, we ran p-value
-tests to see how statistically significant the difference is between the column values for linear and circular
-collisions. We a
-
-Our p-value tests showed that there were several features with a p-value of zero (or close to zero) meaning there
-are strong statistical differences between our data. This is consistent with the experiments performed to retrieve
-these data values as they look for statistically significant values. 
-
-With this knowledge, we were able to conclude that there was no issue with our preprocessing or model. Our
-classification problem was simply easy. Since our data is significantly different for each collision type, our
-model was able to hone in on these trends and them to make accurate predictions, even after only a few epochs. 
+Another big thing we noticed is that the preprocessed data contained a lot more instances of circular collider types than linear. This would have caused bais because the model would have learnt that predicting 'circular' more often than 'linear' would result in higher accuracy, however, that wouldn't have generalized well to real life data from other colliders. In order to combat this, we included a sampler in our normalizer function to ensure that all testing, training, and validation sets had the samenumber of linear and circular collision types in each. 
+After doing this, our accuracy decreased, but it is still quite high. However, we are now confident that our model does not include bias. We ran paired t-tests on the columns across both collider types. 
+Our p-value tests showed that there were several features with a p-value of zero (not exactly zero but rounded to zero in colab) meaning there
+are very strong statistical differences between our linear and circular datapoints. These differences would help our model quickly learn our data. With this knowledge, we were able to conclude that there was no issue with our preprocessing or model. Our classification problem was simply easy. Since our data is significantly different for each collision type, our model was able to hone in on these trends and them to make accurate predictions, even after only a few epochs. 
 
 ## Model 2: Binary Classification Using SVM - Linear vs. Circular Collisions
 ### Overview about SVMs
