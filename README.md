@@ -54,7 +54,7 @@ Plot of counts collected for ProtonMinus at various stopping powers and position
     2. Iterate through each matrix in order to find all indexes where at least one feature has data
     3. Create dataframes for each matrix consisting of 'position' 'stopping power' and the count of that feature such that all dataframes contain the same values for 'position' and 'stopping power'
     4. Concatenate all individial feature dataframes together based on 'position' and 'stopping power' index. We call this master dataframe 'holygrail'
-    5. Down 'holygrail' as a csv
+    5. Download 'holygrail' as a csv
 3. Normalizing and splitting 
     1. Split `train`, `validation` and `test` sets with a split ratio of 70:10:20, respectively
     2. Normalize `train`, `validation` and `test` sets separately
@@ -64,7 +64,7 @@ Plot of counts collected for ProtonMinus at various stopping powers and position
 
 ## Model 1: Binary Classification - Linear vs. Circular Collider Types
 ### Description
-In hopes of predicting the type of collider, either circular or linear, we use a 10-layer ANN that takes in the feature counts, positions, and stopping powers and classifies the data as one of our one-hot-encodered collider type values
+In hopes of predicting the type of collider, either circular or linear, we use a 10-layer ANN that takes in the feature counts, positions, and stopping powers and classifies the data as one of our one-hot-encodered collider types
 * Architecture: we use Relu activation functions for efficent runtime. We also use Sigmoid activation function in our output layer to classify the 2 groups, and use the binary_crossentropy function to update our model weights and bias. We split our dataset into 90:10 of propotion, with linear and circular columns as our target and every other columns as our features.
 * We incorportated EarlyStopping and ModelCheckpoint to ensure we were getting the best weights possible and not spending more time training than the model needed.
 * We also incorporated validation data into our training in order to find the best models for ModelCheckpoint.
