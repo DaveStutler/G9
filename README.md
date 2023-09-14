@@ -64,6 +64,8 @@ Plot of counts collected for ProtonMinus at various stopping powers and position
 
 ## Model 1: Binary Classification - Linear vs. Circular Collider Types
 ### Description
+Model 1: Binary Classification - Linear vs. Circular Collider Types
+Description
 In hopes of predicting the type of collider, either circular or linear, we use a 10-layer ANN that takes in the feature counts, positions, and stopping powers and classifies the data as one of our one-hot-encodered collider types
 * Architecture: we use Relu activation functions for efficent runtime. We also use Sigmoid activation function in our output layer to classify the 2 groups, and use the binary_crossentropy function to update our model weights and bias. We split our dataset into 90:10 of propotion, with linear and circular columns as our target and every other columns as our features.
 * We incorportated EarlyStopping and ModelCheckpoint to ensure we were getting the best weights possible and not spending more time training than the model needed.
@@ -71,7 +73,7 @@ In hopes of predicting the type of collider, either circular or linear, we use a
 * The validation, training, and testing data were all normalized seprately and there was no possibility of data leakage
 * There was also an equal number of both classes in all sets in order to avoid bais
 * We tested the model on unseen values and report the accurary_score, classification report, and a confusion matrix as well as the epoch at which we found our best model based on ModelCheckpoint and EarlyStopping
-* ### K-folds
+### K-folds
 * In order to test the models consistancy accross unseen data, we tested it on 5 folds in which a random section of the training data was sectioned off as validation data and normalized seperately.
 * The goal was to try to get a high mean and low sd to indicate that our model has low variation and is consistantly accurate at predicting unseen data
 
